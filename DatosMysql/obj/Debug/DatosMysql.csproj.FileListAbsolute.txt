@@ -1,0 +1,2 @@
+D:\MorangeSoft\AppDesktopClasic\DatosMysql\obj\Debug\DatosMysql.csprojAssemblyReference.cache
+D:\MorangeSoft\AppDesktopClasic\DatosMysql\obj\Debug\DatosMysql.csproj.CoreCompileInputs.cache

@@ -1,0 +1,271 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{81EA27BE-93FC-43DB-B531-7863091CB9AE}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>interfacedsk</RootNamespace>
+    <AssemblyName>InterfaceDsk</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Data.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Printing.v19.2.Core, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraEditors.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraGrid.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraPrinting.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DHSoftControls, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\DHSoftControls.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Accion.cs" />
+    <Compile Include="alertas\frm_advertencia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="alertas\frm_advertencia.Designer.cs">
+      <DependentUpon>frm_advertencia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="alertas\frm_error_sistema.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="alertas\frm_error_sistema.Designer.cs">
+      <DependentUpon>frm_error_sistema.cs</DependentUpon>
+    </Compile>
+    <Compile Include="alertas\frm_exito_guardar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="alertas\frm_exito_guardar.Designer.cs">
+      <DependentUpon>frm_exito_guardar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="alertas\frm_exito_modificar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="alertas\frm_exito_modificar.Designer.cs">
+      <DependentUpon>frm_exito_modificar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="busquedas\frm_buscar_proveedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="busquedas\frm_buscar_proveedor.Designer.cs">
+      <DependentUpon>frm_buscar_proveedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_principal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_principal.Designer.cs">
+      <DependentUpon>frm_principal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="productos\frm_productos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="productos\frm_productos.Designer.cs">
+      <DependentUpon>frm_productos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="productos\frm_producto_edicion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="productos\frm_producto_edicion.Designer.cs">
+      <DependentUpon>frm_producto_edicion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Proveedor\frm_proveedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Proveedor\frm_proveedor.Designer.cs">
+      <DependentUpon>frm_proveedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Proveedor\frm_proveedor_edicion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Proveedor\frm_proveedor_edicion.Designer.cs">
+      <DependentUpon>frm_proveedor_edicion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="servicios\frm_servicios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="servicios\frm_servicios.Designer.cs">
+      <DependentUpon>frm_servicios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="servicios\frm_servicios_edicion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="servicios\frm_servicios_edicion.Designer.cs">
+      <DependentUpon>frm_servicios_edicion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="usuarios\frm_usuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="usuarios\frm_usuarios.Designer.cs">
+      <DependentUpon>frm_usuarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="login.Designer.cs">
+      <DependentUpon>login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="usuarios\frm_usuario_edicion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="usuarios\frm_usuario_edicion.Designer.cs">
+      <DependentUpon>frm_usuario_edicion.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="alertas\frm_advertencia.resx">
+      <DependentUpon>frm_advertencia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="alertas\frm_error_sistema.resx">
+      <DependentUpon>frm_error_sistema.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="alertas\frm_exito_guardar.resx">
+      <DependentUpon>frm_exito_guardar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="alertas\frm_exito_modificar.resx">
+      <DependentUpon>frm_exito_modificar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="busquedas\frm_buscar_proveedor.resx">
+      <DependentUpon>frm_buscar_proveedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_principal.resx">
+      <DependentUpon>frm_principal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="productos\frm_productos.resx">
+      <DependentUpon>frm_productos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="productos\frm_producto_edicion.resx">
+      <DependentUpon>frm_producto_edicion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Proveedor\frm_proveedor.resx">
+      <DependentUpon>frm_proveedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Proveedor\frm_proveedor_edicion.resx">
+      <DependentUpon>frm_proveedor_edicion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="servicios\frm_servicios.resx">
+      <DependentUpon>frm_servicios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="servicios\frm_servicios_edicion.resx">
+      <DependentUpon>frm_servicios_edicion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="usuarios\frm_usuarios.resx">
+      <DependentUpon>frm_usuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="login.resx">
+      <DependentUpon>login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="usuarios\frm_usuario_edicion.resx">
+      <DependentUpon>frm_usuario_edicion.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Entidad\Entidad.csproj">
+      <Project>{13a24dcb-b150-431c-b538-67480e2e0f7f}</Project>
+      <Name>Entidad</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Logica\Logica.csproj">
+      <Project>{adfa66a8-a2cc-45c9-b169-39701e0143ad}</Project>
+      <Name>Logica</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\usuarios.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\productos.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\guardar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\editar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nuevo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\proveedor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\calificacion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\reportes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\servicios.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\seleccionar.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
