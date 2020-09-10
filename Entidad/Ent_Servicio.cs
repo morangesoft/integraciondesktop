@@ -26,8 +26,12 @@ namespace interfacedsk
         public int estadoServicio { get; set; }
         public int cantidadClicksServicio { get; set; }
         public int cantidadPotencialesComprasServicio { get; set; }
- 
 
-
+        public int idUnidadMedida { get; set; }
+        public string descripcionUnm { get; set; }
+        public string unm_fe { get; set; }
+        public string idAfectacionIgv { get; set; }
+        public string afecIgvDescripcion { get; set; }
+         public string afecIgvTabla { get; set; }
     }
 }

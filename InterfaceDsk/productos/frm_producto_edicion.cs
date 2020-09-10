@@ -21,6 +21,8 @@ namespace interfacedsk.productos
         public int IdProducto;
         private void frm_producto_edicion_Load(object sender, EventArgs e)
         {
+            IniciarComboUnidadMedida();
+            IniciarComboTipoAfectacion();
             if (Es_Nuevo == true)
             {
 
@@ -31,6 +33,51 @@ namespace interfacedsk.productos
                 ListarModificar();
             }
         }
+
+        private List<Ent_Unidad_Medida> ListUnm = new List<Ent_Unidad_Medida>();
+        public void IniciarComboUnidadMedida()
+        {
+            try
+            {
+                Log_Unidad_Medida LogEmp = new Log_Unidad_Medida();
+                Ent_Unidad_Medida Ent = new Ent_Unidad_Medida();
+                cbounidadmedida.ValueMember = "id";
+                cbounidadmedida.DisplayMember = "descripcion";
+
+
+                ListUnm = LogEmp.Listar(Ent);
+
+                cbounidadmedida.DataSource = ListUnm;
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+
+
+        private List<Ent_tipo_afectacion_igv> ListtipAfec= new List<Ent_tipo_afectacion_igv>();
+        public void IniciarComboTipoAfectacion()
+        {
+            try
+            {
+                Log_tipo_afectacion_igv LogEmp = new Log_tipo_afectacion_igv();
+                Ent_tipo_afectacion_igv Ent = new Ent_tipo_afectacion_igv();
+                cbooperacionigv.ValueMember = "afecIgvCodigo";
+                cbooperacionigv.DisplayMember = "afecIgvDescripcion";
+
+
+                ListtipAfec = LogEmp.Listar(Ent);
+
+                cbooperacionigv.DataSource = ListtipAfec;
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
 
 
         public List<Ent_Producto> Lista_Modificar = new List<Ent_Producto>();
@@ -75,7 +122,8 @@ namespace interfacedsk.productos
                     txtfotoprincipal.Text = Enti.fotoPrincipalProducto ;
 
 
-
+                    cbounidadmedida.SelectedValue = Enti.idUnidadMedida;
+                    cbooperacionigv.SelectedValue = Enti.idAfectacionIgv;
 
 
 
@@ -190,6 +238,14 @@ namespace interfacedsk.productos
                 txtnombre.Focus();
                 return false;
             }
+
+            if (string.IsNullOrEmpty(txtcodproducto.Text.Trim()))
+            {
+                Accion.Advertencia("Debe ingresar un código del producto");
+                txtcodproducto.Focus();
+                return false;
+            }
+
             if (string.IsNullOrEmpty(txtdescripcion.Text.Trim()))
             {
                 Accion.Advertencia("Debe ingresar una descripción");
@@ -229,14 +285,7 @@ namespace interfacedsk.productos
                         Ent.idProducto = IdProducto;
                         Ent.idProveedor = Convert.ToInt32(IIf(txtrucproveedor.Tag.ToString() == "",0, Convert.ToInt32(txtrucproveedor.Tag.ToString())));
 
-                      //if (txtcalificacioncod.Text == "")
-                      //  {
-                      //      txtcalificacioncod.Text =Convert.ToString(0);
-                      //    if (Convert.ToInt32(txtcalificacioncod.Text) != 0)
-                      //      {
-                      //          Ent.idCalificacion = Convert.ToInt32(txtcalificacioncod.Text);
-                      //      }
-                      //  }
+ 
   
                         Ent.nombreProducto  = txtnombre.Text;
                         Ent.descripcionProducto = txtdescripcion.Text;
@@ -273,8 +322,8 @@ namespace interfacedsk.productos
                         Ent.codigoProducto  = txtcodproducto.Text;
                         Ent.tiempoGarantiaProducto  = txttiempogarantia.Text;
                         Ent.fotoPrincipalProducto  = txtfotoprincipal.Text;
-
-
+                        Ent.idUnidadMedida = Convert.ToInt32(cbounidadmedida.SelectedValue.ToString());
+                        Ent.idAfectacionIgv = cbooperacionigv.SelectedValue.ToString();
 
                     if (Es_Nuevo == true)
                     {

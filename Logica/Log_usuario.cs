@@ -52,6 +52,17 @@ namespace interfacedsk
                 throw new Exception(ex.Message);
             }
         }
+        public List<Ent_Usuario> Listar_Por_Perfil(Ent_Usuario Cls_Enti)
+        {
+            try
+            {
+                return CapaDato.Listar_Por_Perfil(Cls_Enti);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
 
     }
 }

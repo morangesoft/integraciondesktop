@@ -120,5 +120,12 @@ D:\MorangeSoft\AppDesktopClasic\InterfaceDsk\obj\Debug\interfacedsk.alertas.frm_
 D:\MorangeSoft\AppDesktopClasic\InterfaceDsk\obj\Debug\interfacedsk.alertas.frm_error_sistema.resources
 D:\MorangeSoft\AppDesktopClasic\InterfaceDsk\obj\Debug\interfacedsk.alertas.frm_exito_guardar.resources
 D:\MorangeSoft\AppDesktopClasic\InterfaceDsk\obj\Debug\interfacedsk.alertas.frm_exito_modificar.resources
-D:\MorangeSoft\AppDesktopClasic\InterfaceDsk\obj\Debug\interfacedsk.busquedas.frm_buscar_proveedor.resources
 D:\MorangeSoft\AppDesktopClasic\InterfaceDsk\obj\Debug\InterfaceDsk.exe.licenses
+D:\MorangeSoft\AppDesktopClasic\InterfaceDsk\bin\Debug\Newtonsoft.Json.dll
+D:\MorangeSoft\AppDesktopClasic\InterfaceDsk\bin\Debug\Newtonsoft.Json.xml
+D:\MorangeSoft\AppDesktopClasic\InterfaceDsk\obj\Debug\InterfaceDsk.Form1.resources
+D:\MorangeSoft\AppDesktopClasic\InterfaceDsk\obj\Debug\interfacedsk.facrturacion.frm_facturacion_edicion.resources
+D:\MorangeSoft\AppDesktopClasic\InterfaceDsk\obj\Debug\interfacedsk.facrturacion.frm_facturacion.resources
+D:\MorangeSoft\AppDesktopClasic\InterfaceDsk\obj\Debug\interfacedsk.busquedas.frm_buscar_cliente.resources
+D:\MorangeSoft\AppDesktopClasic\InterfaceDsk\obj\Debug\interfacedsk.busquedas.frm_buscar_producto.resources
+D:\MorangeSoft\AppDesktopClasic\InterfaceDsk\obj\Debug\interfacedsk.busquedas.frm_buscar_Servicios.resources

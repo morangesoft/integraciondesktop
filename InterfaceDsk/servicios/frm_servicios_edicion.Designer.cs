@@ -32,6 +32,7 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btngrabar = new System.Windows.Forms.ToolStripButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.txtcantidadstock = new dhsoft.TextBoxNew(this.components);
             this.txtprecio = new dhsoft.TextBoxNew(this.components);
             this.btnbuscarimg = new System.Windows.Forms.Button();
@@ -56,7 +57,10 @@
             this.txtrucproveedordesc = new dhsoft.TextBoxNew(this.components);
             this.txtrucproveedor = new dhsoft.TextBoxNew(this.components);
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.cbooperacionigv = new System.Windows.Forms.ComboBox();
+            this.cbounidadmedida = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -84,6 +88,10 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cbooperacionigv);
+            this.groupBox1.Controls.Add(this.cbounidadmedida);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.pictureBox1);
             this.groupBox1.Controls.Add(this.txtcantidadstock);
             this.groupBox1.Controls.Add(this.txtprecio);
@@ -114,6 +122,16 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "datos";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox1.Location = new System.Drawing.Point(597, 122);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(197, 126);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 26;
+            this.pictureBox1.TabStop = false;
             // 
             // txtcantidadstock
             // 
@@ -427,15 +445,41 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // pictureBox1
+            // cbooperacionigv
             // 
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Location = new System.Drawing.Point(597, 122);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(197, 126);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 26;
-            this.pictureBox1.TabStop = false;
+            this.cbooperacionigv.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbooperacionigv.FormattingEnabled = true;
+            this.cbooperacionigv.Location = new System.Drawing.Point(117, 198);
+            this.cbooperacionigv.Name = "cbooperacionigv";
+            this.cbooperacionigv.Size = new System.Drawing.Size(419, 21);
+            this.cbooperacionigv.TabIndex = 46;
+            // 
+            // cbounidadmedida
+            // 
+            this.cbounidadmedida.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbounidadmedida.FormattingEnabled = true;
+            this.cbounidadmedida.Location = new System.Drawing.Point(117, 171);
+            this.cbounidadmedida.Name = "cbounidadmedida";
+            this.cbounidadmedida.Size = new System.Drawing.Size(419, 21);
+            this.cbounidadmedida.TabIndex = 47;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(17, 176);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(93, 13);
+            this.label2.TabIndex = 44;
+            this.label2.Text = "Unidad de medida";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(18, 206);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(91, 13);
+            this.label6.TabIndex = 45;
+            this.label6.Text = "Operacion del Igv";
             // 
             // frm_servicios_edicion
             // 
@@ -490,5 +534,9 @@
         internal dhsoft.TextBoxNew txtcantidadstock;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ComboBox cbooperacionigv;
+        private System.Windows.Forms.ComboBox cbounidadmedida;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label6;
     }
 }

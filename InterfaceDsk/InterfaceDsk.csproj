@@ -44,6 +44,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\DHSoftControls.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
@@ -83,11 +86,35 @@
     <Compile Include="alertas\frm_exito_modificar.Designer.cs">
       <DependentUpon>frm_exito_modificar.cs</DependentUpon>
     </Compile>
-    <Compile Include="busquedas\frm_buscar_proveedor.cs">
+    <Compile Include="busquedas\frm_buscar_cliente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="busquedas\frm_buscar_proveedor.Designer.cs">
-      <DependentUpon>frm_buscar_proveedor.cs</DependentUpon>
+    <Compile Include="busquedas\frm_buscar_cliente.Designer.cs">
+      <DependentUpon>frm_buscar_cliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="busquedas\frm_buscar_producto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="busquedas\frm_buscar_producto.Designer.cs">
+      <DependentUpon>frm_buscar_producto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="busquedas\frm_buscar_Servicios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="busquedas\frm_buscar_Servicios.Designer.cs">
+      <DependentUpon>frm_buscar_Servicios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="facrturacion\frm_facturacion_edicion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="facrturacion\frm_facturacion_edicion.Designer.cs">
+      <DependentUpon>frm_facturacion_edicion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="facrturacion\frm_facturacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="facrturacion\frm_facturacion.Designer.cs">
+      <DependentUpon>frm_facturacion.cs</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -125,6 +152,7 @@
     <Compile Include="Proveedor\frm_proveedor_edicion.Designer.cs">
       <DependentUpon>frm_proveedor_edicion.cs</DependentUpon>
     </Compile>
+    <Compile Include="prueba\NubeFact-json.cs" />
     <Compile Include="servicios\frm_servicios.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -169,8 +197,23 @@
     <EmbeddedResource Include="alertas\frm_exito_modificar.resx">
       <DependentUpon>frm_exito_modificar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="busquedas\frm_buscar_proveedor.resx">
-      <DependentUpon>frm_buscar_proveedor.cs</DependentUpon>
+    <EmbeddedResource Include="busquedas\frm_buscar_cliente.resx">
+      <DependentUpon>frm_buscar_cliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="busquedas\frm_buscar_producto.resx">
+      <DependentUpon>frm_buscar_producto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="busquedas\frm_buscar_Servicios.resx">
+      <DependentUpon>frm_buscar_Servicios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="facrturacion\frm_facturacion_edicion.resx">
+      <DependentUpon>frm_facturacion_edicion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="facrturacion\frm_facturacion.resx">
+      <DependentUpon>frm_facturacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_principal.resx">
       <DependentUpon>frm_principal.cs</DependentUpon>

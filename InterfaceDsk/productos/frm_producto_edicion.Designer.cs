@@ -72,6 +72,10 @@
             this.txtnombre = new dhsoft.TextBoxNew(this.components);
             this.txtrucproveedordesc = new dhsoft.TextBoxNew(this.components);
             this.txtrucproveedor = new dhsoft.TextBoxNew(this.components);
+            this.label2 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.cbounidadmedida = new System.Windows.Forms.ComboBox();
+            this.cbooperacionigv = new System.Windows.Forms.ComboBox();
             this.toolStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -98,6 +102,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cbooperacionigv);
+            this.groupBox1.Controls.Add(this.cbounidadmedida);
             this.groupBox1.Controls.Add(this.txtprecio);
             this.groupBox1.Controls.Add(this.txtcantidadstock);
             this.groupBox1.Controls.Add(this.button1);
@@ -121,6 +127,8 @@
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.label21);
+            this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.txtmarca);
             this.groupBox1.Controls.Add(this.txtpeso);
@@ -140,7 +148,7 @@
             this.groupBox1.Controls.Add(this.txtrucproveedor);
             this.groupBox1.Location = new System.Drawing.Point(0, 42);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(800, 262);
+            this.groupBox1.Size = new System.Drawing.Size(800, 321);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "datos";
@@ -660,11 +668,47 @@
             this.txtrucproveedor.TextChanged += new System.EventHandler(this.txtrucproveedor_TextChanged);
             this.txtrucproveedor.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtrucproveedor_KeyDown);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(387, 258);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(91, 13);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Operacion del Igv";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(9, 253);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(93, 13);
+            this.label21.TabIndex = 0;
+            this.label21.Text = "Unidad de medida";
+            // 
+            // cbounidadmedida
+            // 
+            this.cbounidadmedida.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbounidadmedida.FormattingEnabled = true;
+            this.cbounidadmedida.Location = new System.Drawing.Point(109, 248);
+            this.cbounidadmedida.Name = "cbounidadmedida";
+            this.cbounidadmedida.Size = new System.Drawing.Size(272, 21);
+            this.cbounidadmedida.TabIndex = 43;
+            // 
+            // cbooperacionigv
+            // 
+            this.cbooperacionigv.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbooperacionigv.FormattingEnabled = true;
+            this.cbooperacionigv.Location = new System.Drawing.Point(486, 250);
+            this.cbooperacionigv.Name = "cbooperacionigv";
+            this.cbooperacionigv.Size = new System.Drawing.Size(302, 21);
+            this.cbooperacionigv.TabIndex = 43;
+            // 
             // frm_producto_edicion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 314);
+            this.ClientSize = new System.Drawing.Size(800, 375);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.toolStrip1);
             this.MaximizeBox = false;
@@ -727,5 +771,9 @@
         private dhsoft.TextBoxNew txtcolor;
         internal dhsoft.TextBoxNew txtprecio;
         internal dhsoft.TextBoxNew txtcantidadstock;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cbooperacionigv;
+        private System.Windows.Forms.ComboBox cbounidadmedida;
     }
 }

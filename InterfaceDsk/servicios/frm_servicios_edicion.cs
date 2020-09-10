@@ -26,6 +26,9 @@ namespace interfacedsk.servicios
         string nombreImg = "";
         private void frm_servicios_edicion_Load(object sender, EventArgs e)
         {
+            IniciarComboUnidadMedida();
+            IniciarComboTipoAfectacion();
+
             if (Es_Nuevo == true)
             {
 
@@ -34,6 +37,50 @@ namespace interfacedsk.servicios
             else
             {
                ListarModificar();
+            }
+        }
+
+        private List<Ent_Unidad_Medida> ListUnm = new List<Ent_Unidad_Medida>();
+        public void IniciarComboUnidadMedida()
+        {
+            try
+            {
+                Log_Unidad_Medida LogEmp = new Log_Unidad_Medida();
+                Ent_Unidad_Medida Ent = new Ent_Unidad_Medida();
+                cbounidadmedida.ValueMember = "id";
+                cbounidadmedida.DisplayMember = "descripcion";
+
+
+                ListUnm = LogEmp.Listar(Ent);
+
+                cbounidadmedida.DataSource = ListUnm;
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+
+
+        private List<Ent_tipo_afectacion_igv> ListtipAfec = new List<Ent_tipo_afectacion_igv>();
+        public void IniciarComboTipoAfectacion()
+        {
+            try
+            {
+                Log_tipo_afectacion_igv LogEmp = new Log_tipo_afectacion_igv();
+                Ent_tipo_afectacion_igv Ent = new Ent_tipo_afectacion_igv();
+                cbooperacionigv.ValueMember = "afecIgvCodigo";
+                cbooperacionigv.DisplayMember = "afecIgvDescripcion";
+
+
+                ListtipAfec = LogEmp.Listar(Ent);
+
+                cbooperacionigv.DataSource = ListtipAfec;
+            }
+            catch (Exception ex)
+            {
+
             }
         }
 
@@ -71,22 +118,17 @@ namespace interfacedsk.servicios
                     txttiempogarantia.Text  = Enti.tiempoGarantiaServicio ;
                     txtfotoprincipal.Text   = Enti.fotosGaleriaServicio;
 
-                    //
-                    //string pathDestino = @"c:\MP_Upload";
+           
                     string ruta = @"c:\MP_Upload";
 
-                    string[] filesindirectory = Directory.GetFiles(ruta);
-                    int i = 1;
-                    foreach (string s in filesindirectory)
+                    string[] fotos = Directory.GetFiles(ruta,Enti.fotosGaleriaServicio.Trim());
+                    if (fotos.Length > 0)
                     {
-                        //Image img = new Image();
-                        //img.ID = "image" + i.ToString();
-                        //img.ImageUrl = s;
-                        //img.Visible = true;
-                        //Page.Controls.Add(img);
-                        //i++;
-
+                        pictureBox1.Image = new Bitmap(fotos[0]);
                     }
+
+                    cbounidadmedida.SelectedValue = Enti.idUnidadMedida;
+                    cbooperacionigv.SelectedValue = Enti.idAfectacionIgv;
 
 
                 }
@@ -183,6 +225,8 @@ namespace interfacedsk.servicios
                     Ent.tiempoGarantiaServicio = txttiempogarantia.Text;
                     Ent.fotosGaleriaServicio = txtfotoprincipal.Text;
 
+                    Ent.idUnidadMedida = Convert.ToInt32(cbounidadmedida.SelectedValue.ToString());
+                    Ent.idAfectacionIgv = cbooperacionigv.SelectedValue.ToString();
 
 
                     if (Es_Nuevo == true)
@@ -213,7 +257,6 @@ namespace interfacedsk.servicios
                         {
                             Accion.ErrorSistema(ex.Message);
                         }
-
 
 
 

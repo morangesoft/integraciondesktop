@@ -1,4 +1,5 @@
-﻿using interfacedsk.productos;
+﻿using interfacedsk.facrturacion;
+using interfacedsk.productos;
 using interfacedsk.Proveedor;
 using interfacedsk.servicios;
 using System;
@@ -75,6 +76,17 @@ namespace interfacedsk
             if (MdiNoDuplicate("frm_servicios") == false)
             {
                 Form f = new frm_servicios();
+                f.MdiParent = this;
+                f.Show();
+                f.Activate();
+            }
+        }
+
+        private void btnfacturacion_Click(object sender, EventArgs e)
+        {
+            if (MdiNoDuplicate("frm_facturacion") == false)
+            {
+                Form f = new frm_facturacion();
                 f.MdiParent = this;
                 f.Show();
                 f.Activate();

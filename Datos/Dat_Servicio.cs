@@ -31,6 +31,11 @@ namespace interfacedsk
                         Cmd.Parameters.Add("?tiempoGarantiaServicio", MySqlDbType.VarChar).Value = Clas_Enti.tiempoGarantiaServicio;
                         Cmd.Parameters.Add("?fotosGaleriaServicio", MySqlDbType.VarChar).Value = Clas_Enti.fotosGaleriaServicio;
 
+                        Cmd.Parameters.Add("?idUnidadMedida", MySqlDbType.Int32).Value = Clas_Enti.idUnidadMedida;
+                        Cmd.Parameters.Add("?idAfectacionIgv", MySqlDbType.VarChar).Value = Clas_Enti.idAfectacionIgv;
+
+
+
                         Cn.Open();
                         Trs = Cn.BeginTransaction();
                         Cmd.Transaction = Trs;
@@ -70,6 +75,11 @@ namespace interfacedsk
                         Cmd.Parameters.Add("?codigoServicio", MySqlDbType.VarChar).Value = Clas_Enti.codigoServicio;
                         Cmd.Parameters.Add("?tiempoGarantiaServicio", MySqlDbType.VarChar).Value = Clas_Enti.tiempoGarantiaServicio;
                         Cmd.Parameters.Add("?fotosGaleriaServicio", MySqlDbType.VarChar).Value = Clas_Enti.fotosGaleriaServicio;
+
+                        Cmd.Parameters.Add("?idUnidadMedida", MySqlDbType.Int32).Value = Clas_Enti.idUnidadMedida;
+                        Cmd.Parameters.Add("?idAfectacionIgv", MySqlDbType.VarChar).Value = Clas_Enti.idAfectacionIgv;
+
+
 
                         Cn.Open();
                         Trs = Cn.BeginTransaction();
@@ -121,7 +131,10 @@ namespace interfacedsk
                                     estadoServicio = Dr.GetInt32(14),
                                     cantidadClicksServicio = Dr.GetInt32(15),
                                     cantidadPotencialesComprasServicio = Dr.GetInt32(16),
-                             
+                                    idUnidadMedida = Dr.GetInt32(17),
+                                    descripcionUnm = Dr.GetString(18),
+                                    idAfectacionIgv = Dr.GetString(19),
+                                    afecIgvDescripcion = Dr.GetString(20),
                                 });
                             }
                         }
@@ -136,6 +149,72 @@ namespace interfacedsk
 
 
         }
+
+
+
+        public List<Ent_Servicio> ListarPorCodigo(Ent_Servicio Cls_Enti)
+        {
+            List<Ent_Servicio> ListaItems = new List<Ent_Servicio>();
+            try
+            {
+                using (MySqlConnection Cn = new MySqlConnection(Dat_Conexion.ObtenerConnection()))
+                {
+
+                    using (MySqlCommand Cmd = new MySqlCommand("sp_ServicioListarPorCodigo", Cn) { CommandType = System.Data.CommandType.StoredProcedure })
+                    {
+                        Cmd.Parameters.Add("?_codigoServicio", MySqlDbType.Int32).Value = Cls_Enti.codigoServicio;
+                        Cn.Open();
+                        using (MySqlDataReader Dr = Cmd.ExecuteReader())
+                        {
+                            while (Dr.Read())
+                            {
+                                ListaItems.Add(new Ent_Servicio
+                                {
+                                    idServicio = Dr.GetInt32(0),
+                                    idProveedor = Dr.GetInt32(1),
+                                    numeroDocumentoProveedor = Dr.GetString(2),
+                                    nombreProveedor = Dr.GetString(3),
+                                    idCalificacion = Dr.GetInt32(4),
+                                    idHorario = Dr.GetInt32(5),
+                                    nombreServicio = Dr.GetString(6),
+                                    descripcionServicio = Dr.GetString(7),
+                                    precioServicio = Dr.GetDecimal(8),
+                                    fechaExpiracionServicio = Dr.GetDateTime(9),
+                                    cantidadStockServicio = Dr.GetDecimal(10),
+                                    codigoServicio = Dr.GetString(11),
+                                    tiempoGarantiaServicio = Dr.GetString(12),
+                                    fotosGaleriaServicio = Dr.GetString(13),
+                                    estadoServicio = Dr.GetInt32(14),
+                                    cantidadClicksServicio = Dr.GetInt32(15),
+                                    cantidadPotencialesComprasServicio = Dr.GetInt32(16),
+                                    idUnidadMedida = Dr.GetInt32(17),
+                                    descripcionUnm = Dr.GetString(18),
+                                    unm_fe=Dr.GetString(19),
+                                    idAfectacionIgv = Dr.GetString(20),
+                                    afecIgvDescripcion = Dr.GetString(21),
+                                    afecIgvTabla = Dr.GetString(22),
+                                });
+                            }
+                        }
+                    }
+                }
+                return ListaItems;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+
+        }
+
+
+
+
+
+
+
+
 
 
     }

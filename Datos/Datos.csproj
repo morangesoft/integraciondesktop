@@ -43,12 +43,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dat_Comprobante.cs" />
     <Compile Include="Dat_Conexion.cs" />
+    <Compile Include="Dat_Documento.cs" />
     <Compile Include="Dat_Inicio_Sesion.cs" />
+    <Compile Include="Dat_Moneda.cs" />
     <Compile Include="Dat_Perfil.cs" />
     <Compile Include="Dat_Producto.cs" />
     <Compile Include="Dat_Proveedor.cs" />
     <Compile Include="Dat_Servicio.cs" />
+    <Compile Include="Dat_tipo_afectacion_igv.cs" />
+    <Compile Include="Dat_Tipo_Producto.cs" />
+    <Compile Include="Dat_Unidad_Medida.cs" />
     <Compile Include="Dat_usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

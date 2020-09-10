@@ -52,5 +52,18 @@ namespace interfacedsk
             }
         }
 
+        public List<Ent_Producto> ListarPorCodigo(Ent_Producto Cls_Enti)
+        {
+            try
+            {
+                return CapaDato.ListarPorCodigo(Cls_Enti);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+
     }
 }

@@ -42,13 +42,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Ent_Comprobante.cs" />
+    <Compile Include="Ent_Documento.cs" />
+    <Compile Include="Ent_Facturacion.cs" />
     <Compile Include="Ent_Inicio_Sesion.cs" />
+    <Compile Include="Ent_Moneda.cs" />
     <Compile Include="Ent_Perfil.cs" />
     <Compile Include="Ent_Producto.cs" />
     <Compile Include="Ent_Proveedor.cs" />
     <Compile Include="Ent_Servicio.cs" />
+    <Compile Include="Ent_Tipo_Producto.cs" />
+    <Compile Include="Ent_Unidad_Medida.cs" />
     <Compile Include="Ent_Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Ent_tipo_afectacion_igv.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

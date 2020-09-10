@@ -8,6 +8,9 @@ namespace Entidad
 {
   public  class Ent_Usuario
     {
+
+        public int idtipdoc { get; set; }
+        public string tipodocdesc { get; set; }
         public int usuario_id { get; set; }
         public string usuario_nombre { get; set; }
         public string usuario_apellido { get; set; }
@@ -20,6 +23,7 @@ namespace Entidad
         public string perfil_nombre { get; set; }
         public int usuario_activo { get; set; }
         public int usuario_eliminado { get; set; }
+        public string direccion { get; set; }
 
 
 

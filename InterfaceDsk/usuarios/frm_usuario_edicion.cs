@@ -23,6 +23,7 @@ namespace interfacedsk.usuarios
         private void frm_usuario_edicion_Load(object sender, EventArgs e)
         {
             IniciarCombo();
+            IniciarComboDocumento();
 
             if (Es_Nuevo == true)
             {
@@ -52,7 +53,29 @@ namespace interfacedsk.usuarios
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Inicio de sesion incorrecto", MessageBoxButtons.OK);
+               
+            }
+        }
+
+
+        private List<Ent_Documento> Listardoc = new List<Ent_Documento>();
+        public void IniciarComboDocumento()
+        {
+            try
+            {
+                Log_Documento LogEmp = new Log_Documento();
+                Ent_Documento Ent = new Ent_Documento();
+                cbotipodoc.ValueMember = "id";
+                cbotipodoc.DisplayMember = "descripcion";
+
+
+                Listardoc = LogEmp.Listar(Ent);
+
+                cbotipodoc.DataSource = Listardoc;
+            }
+            catch (Exception ex)
+            {
+        
             }
         }
 
@@ -90,15 +113,15 @@ namespace interfacedsk.usuarios
                         Ent.usuario_dni = txtdni.Text.Trim();
                         Ent.usuario_celular =txtcelular.Text.Trim();
                         Ent.perfil_id =Convert.ToInt32(cboperfil.SelectedValue.ToString());
-
-
+                        Ent.idtipdoc =Convert.ToInt32(cbotipodoc.SelectedValue.ToString());
+                        Ent.direccion    = txtdireccion.Text;
 
                     if (Es_Nuevo == true)
                         {
                             if (Log.Insertar(Ent))
                             {
                                 Accion.ExitoGuardar();
-                    
+                                this.Close();
                             }
 
                         }
@@ -144,13 +167,15 @@ namespace interfacedsk.usuarios
 
                     id = Enti.usuario_id;
 
-                txtnombres.Text  = Enti.usuario_nombre ;
-                txtapellidos.Text    = Enti.usuario_apellido;
-                txtemail.Text     = Enti.usuario_email ;
-                txtclave.Text     = Enti.usuario_clave;
-                txtdni.Text   = Enti.usuario_dni;
-                txtcelular.Text  = Enti.usuario_celular ;
-                cboperfil.SelectedValue = Enti.perfil_id;
+                    txtnombres.Text  = Enti.usuario_nombre ;
+                    txtapellidos.Text    = Enti.usuario_apellido;
+                    txtemail.Text     = Enti.usuario_email ;
+                    txtclave.Text     = Enti.usuario_clave;
+                    txtdni.Text   = Enti.usuario_dni;
+                    txtcelular.Text  = Enti.usuario_celular ;
+                    cboperfil.SelectedValue = Enti.perfil_id;
+                    cbotipodoc.SelectedValue = Enti.idtipdoc;
+                    txtdireccion.Text = Enti.direccion;
 
                 }
             }catch(Exception ex)
@@ -159,9 +184,32 @@ namespace interfacedsk.usuarios
             }
         }
 
+        string cod = "";
+        string codsunat = "";
+        private void cbotipodoc_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (cbotipodoc.Items.Count > 0)
+                {
+                      List<Ent_Documento> Lista = new List<Ent_Documento>();
+                    cod = cbotipodoc.SelectedValue.ToString();
+                    Log_Documento LogEmp = new Log_Documento();
+                    Ent_Documento Ent = new Ent_Documento();
+                    Ent.id =Convert.ToInt32(cod);
 
 
+                    Lista = LogEmp.Listar(Ent);
 
+                    codsunat = Lista[0].codsunat;
+                }
 
+            }
+            catch (Exception ex)
+            {
+                Accion.ErrorSistema(ex.Message);
+            }
+
+        }
     }
 }

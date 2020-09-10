@@ -35,6 +35,7 @@
             this.btnproductos = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.btnproveedor = new System.Windows.Forms.ToolStripButton();
+            this.btnfacturacion = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.ventasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -50,6 +51,7 @@
             this.btnproductos,
             this.toolStripButton2,
             this.btnproveedor,
+            this.btnfacturacion,
             this.toolStripButton4,
             this.toolStripDropDownButton1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
@@ -105,6 +107,15 @@
             this.btnproveedor.Size = new System.Drawing.Size(97, 36);
             this.btnproveedor.Text = "Proveedor";
             this.btnproveedor.Click += new System.EventHandler(this.btnproveedor_Click);
+            // 
+            // btnfacturacion
+            // 
+            this.btnfacturacion.Image = ((System.Drawing.Image)(resources.GetObject("btnfacturacion.Image")));
+            this.btnfacturacion.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnfacturacion.Name = "btnfacturacion";
+            this.btnfacturacion.Size = new System.Drawing.Size(89, 36);
+            this.btnfacturacion.Text = "Facturación";
+            this.btnfacturacion.Click += new System.EventHandler(this.btnfacturacion_Click);
             // 
             // toolStripButton4
             // 
@@ -170,5 +181,6 @@
         private System.Windows.Forms.ToolStripMenuItem usuariosToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton btnproveedor;
         private System.Windows.Forms.ToolStripButton toolStripButton4;
+        private System.Windows.Forms.ToolStripButton btnfacturacion;
     }
 }
