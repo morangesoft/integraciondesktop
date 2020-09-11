@@ -11,6 +11,7 @@ namespace Entidad
 
         public int idtipdoc { get; set; }
         public string tipodocdesc { get; set; }
+        public string tipDoccodsunat { get; set; }
         public int usuario_id { get; set; }
         public string usuario_nombre { get; set; }
         public string usuario_apellido { get; set; }

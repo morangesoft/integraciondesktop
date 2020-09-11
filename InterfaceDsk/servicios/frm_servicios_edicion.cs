@@ -407,5 +407,15 @@ namespace interfacedsk.servicios
                 MessageBox.Show("El archivo seleccionado no es un tipo de imagen válido");
             }
         }
+
+        private void cbounidadmedida_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbooperacionigv_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

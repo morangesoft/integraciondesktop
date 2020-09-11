@@ -168,7 +168,8 @@ namespace interfacedsk
                                     usuario_eliminado = Dr.GetInt32(11),
                                     idtipdoc = Dr.GetInt32(12),
                                     tipodocdesc = Dr.GetString(13),
-                                    direccion = Dr.GetString(14)
+                                    tipDoccodsunat = Dr.GetString(14),
+                                    direccion = Dr.GetString(15)
                                 });
                             }
                         }

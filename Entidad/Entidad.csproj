@@ -54,6 +54,9 @@
     <Compile Include="Ent_Tipo_Producto.cs" />
     <Compile Include="Ent_Unidad_Medida.cs" />
     <Compile Include="Ent_Usuario.cs" />
+    <Compile Include="nube fact\Invoice.cs" />
+    <Compile Include="nube fact\Items.cs" />
+    <Compile Include="nube fact\Respuesta.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Ent_tipo_afectacion_igv.cs" />
   </ItemGroup>

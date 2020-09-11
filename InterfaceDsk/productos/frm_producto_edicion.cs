@@ -356,5 +356,14 @@ namespace interfacedsk.productos
         Object IIf(bool expression, object truePart, object falsePart)
         { return expression ? truePart : falsePart; }
 
+        private void cbounidadmedida_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbooperacionigv_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

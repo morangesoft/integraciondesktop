@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Log_Comprobante.cs" />
     <Compile Include="Log_Documento.cs" />
+    <Compile Include="Log_Facturacion.cs" />
     <Compile Include="Log_Inicio_sesion.cs" />
     <Compile Include="Log_Moneda.cs" />
     <Compile Include="Log_Perfil.cs" />

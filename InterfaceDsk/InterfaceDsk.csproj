@@ -152,7 +152,7 @@
     <Compile Include="Proveedor\frm_proveedor_edicion.Designer.cs">
       <DependentUpon>frm_proveedor_edicion.cs</DependentUpon>
     </Compile>
-    <Compile Include="prueba\NubeFact-json.cs" />
+    <Compile Include="facturacion electronica\NubeFact-json.cs" />
     <Compile Include="servicios\frm_servicios.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -164,6 +164,12 @@
     </Compile>
     <Compile Include="servicios\frm_servicios_edicion.Designer.cs">
       <DependentUpon>frm_servicios_edicion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="usuarios\fmr_prueba.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="usuarios\fmr_prueba.Designer.cs">
+      <DependentUpon>fmr_prueba.cs</DependentUpon>
     </Compile>
     <Compile Include="usuarios\frm_usuarios.cs">
       <SubType>Form</SubType>
@@ -237,6 +243,9 @@
     <EmbeddedResource Include="servicios\frm_servicios_edicion.resx">
       <DependentUpon>frm_servicios_edicion.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="usuarios\fmr_prueba.resx">
+      <DependentUpon>fmr_prueba.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="usuarios\frm_usuarios.resx">
       <DependentUpon>frm_usuarios.cs</DependentUpon>
     </EmbeddedResource>
@@ -309,6 +318,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\seleccionar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnDetNuevo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnDetModificar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnDetAgregar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnDetQuitar.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

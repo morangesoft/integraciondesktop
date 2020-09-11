@@ -32,6 +32,10 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btngrabar = new System.Windows.Forms.ToolStripButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbooperacionigv = new System.Windows.Forms.ComboBox();
+            this.cbounidadmedida = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.txtcantidadstock = new dhsoft.TextBoxNew(this.components);
             this.txtprecio = new dhsoft.TextBoxNew(this.components);
@@ -57,10 +61,6 @@
             this.txtrucproveedordesc = new dhsoft.TextBoxNew(this.components);
             this.txtrucproveedor = new dhsoft.TextBoxNew(this.components);
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.cbooperacionigv = new System.Windows.Forms.ComboBox();
-            this.cbounidadmedida = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -122,6 +122,44 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "datos";
+            // 
+            // cbooperacionigv
+            // 
+            this.cbooperacionigv.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbooperacionigv.FormattingEnabled = true;
+            this.cbooperacionigv.Location = new System.Drawing.Point(117, 198);
+            this.cbooperacionigv.Name = "cbooperacionigv";
+            this.cbooperacionigv.Size = new System.Drawing.Size(419, 21);
+            this.cbooperacionigv.TabIndex = 46;
+            this.cbooperacionigv.SelectedIndexChanged += new System.EventHandler(this.cbooperacionigv_SelectedIndexChanged);
+            // 
+            // cbounidadmedida
+            // 
+            this.cbounidadmedida.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbounidadmedida.FormattingEnabled = true;
+            this.cbounidadmedida.Location = new System.Drawing.Point(117, 171);
+            this.cbounidadmedida.Name = "cbounidadmedida";
+            this.cbounidadmedida.Size = new System.Drawing.Size(419, 21);
+            this.cbounidadmedida.TabIndex = 47;
+            this.cbounidadmedida.SelectedIndexChanged += new System.EventHandler(this.cbounidadmedida_SelectedIndexChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(17, 176);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(93, 13);
+            this.label2.TabIndex = 44;
+            this.label2.Text = "Unidad de medida";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(18, 206);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(91, 13);
+            this.label6.TabIndex = 45;
+            this.label6.Text = "Operacion del Igv";
             // 
             // pictureBox1
             // 
@@ -444,42 +482,6 @@
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // cbooperacionigv
-            // 
-            this.cbooperacionigv.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbooperacionigv.FormattingEnabled = true;
-            this.cbooperacionigv.Location = new System.Drawing.Point(117, 198);
-            this.cbooperacionigv.Name = "cbooperacionigv";
-            this.cbooperacionigv.Size = new System.Drawing.Size(419, 21);
-            this.cbooperacionigv.TabIndex = 46;
-            // 
-            // cbounidadmedida
-            // 
-            this.cbounidadmedida.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbounidadmedida.FormattingEnabled = true;
-            this.cbounidadmedida.Location = new System.Drawing.Point(117, 171);
-            this.cbounidadmedida.Name = "cbounidadmedida";
-            this.cbounidadmedida.Size = new System.Drawing.Size(419, 21);
-            this.cbounidadmedida.TabIndex = 47;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(17, 176);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(93, 13);
-            this.label2.TabIndex = 44;
-            this.label2.Text = "Unidad de medida";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(18, 206);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(91, 13);
-            this.label6.TabIndex = 45;
-            this.label6.Text = "Operacion del Igv";
             // 
             // frm_servicios_edicion
             // 

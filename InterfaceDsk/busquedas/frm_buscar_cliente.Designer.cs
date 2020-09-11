@@ -71,7 +71,7 @@
             this.dgvdatos.Location = new System.Drawing.Point(0, 39);
             this.dgvdatos.MainView = this.gridView1;
             this.dgvdatos.Name = "dgvdatos";
-            this.dgvdatos.Size = new System.Drawing.Size(886, 411);
+            this.dgvdatos.Size = new System.Drawing.Size(886, 343);
             this.dgvdatos.TabIndex = 4;
             this.dgvdatos.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -180,10 +180,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(886, 450);
+            this.ClientSize = new System.Drawing.Size(886, 382);
             this.Controls.Add(this.dgvdatos);
             this.Controls.Add(this.toolStrip1);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frm_buscar_cliente";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Lista de clientes";
             this.Load += new System.EventHandler(this.frm_buscar_cliente_Load);
             this.toolStrip1.ResumeLayout(false);

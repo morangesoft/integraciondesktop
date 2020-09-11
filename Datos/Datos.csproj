@@ -46,6 +46,7 @@
     <Compile Include="Dat_Comprobante.cs" />
     <Compile Include="Dat_Conexion.cs" />
     <Compile Include="Dat_Documento.cs" />
+    <Compile Include="Dat_Facturacion.cs" />
     <Compile Include="Dat_Inicio_Sesion.cs" />
     <Compile Include="Dat_Moneda.cs" />
     <Compile Include="Dat_Perfil.cs" />

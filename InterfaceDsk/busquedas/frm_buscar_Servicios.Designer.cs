@@ -50,7 +50,7 @@
             this.btnseleccion});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(800, 39);
+            this.toolStrip1.Size = new System.Drawing.Size(886, 39);
             this.toolStrip1.TabIndex = 5;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -70,7 +70,7 @@
             this.dgvdatos.Location = new System.Drawing.Point(0, 39);
             this.dgvdatos.MainView = this.gridView1;
             this.dgvdatos.Name = "dgvdatos";
-            this.dgvdatos.Size = new System.Drawing.Size(800, 411);
+            this.dgvdatos.Size = new System.Drawing.Size(886, 343);
             this.dgvdatos.TabIndex = 6;
             this.dgvdatos.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -169,10 +169,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(886, 382);
             this.Controls.Add(this.dgvdatos);
             this.Controls.Add(this.toolStrip1);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frm_buscar_Servicios";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Lista de servicios";
             this.Load += new System.EventHandler(this.frm_buscar_Servicios_Load);
             this.toolStrip1.ResumeLayout(false);

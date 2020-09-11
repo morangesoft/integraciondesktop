@@ -42,10 +42,12 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtnumero = new dhsoft.TextBoxNew(this.components);
             this.txtserie = new dhsoft.TextBoxNew(this.components);
             this.txtclienterucdnides = new dhsoft.TextBoxNew(this.components);
+            this.txtglosa = new dhsoft.TextBoxNew(this.components);
             this.txtclienterucdni = new dhsoft.TextBoxNew(this.components);
             this.label6 = new System.Windows.Forms.Label();
             this.lbldescripcionproser = new System.Windows.Forms.Label();
@@ -55,17 +57,13 @@
             this.TxtItNum = new dhsoft.TextBoxNew(this.components);
             this.GbxResumen = new System.Windows.Forms.GroupBox();
             this.Label34 = new System.Windows.Forms.Label();
-            this.Label40 = new System.Windows.Forms.Label();
-            this.TxtRsISC = new dhsoft.TextBoxNew(this.components);
             this.Label32 = new System.Windows.Forms.Label();
-            this.TxtRsValExporta = new dhsoft.TextBoxNew(this.components);
             this.TxtRsBaseImponible = new dhsoft.TextBoxNew(this.components);
             this.TxtRsInAfecta = new dhsoft.TextBoxNew(this.components);
             this.TxtRsIGVMonto = new dhsoft.TextBoxNew(this.components);
             this.TxtRsOtrosTribCarg = new dhsoft.TextBoxNew(this.components);
             this.TxtRsIGVPorc = new dhsoft.TextBoxNew(this.components);
             this.TxtRsExonerada = new dhsoft.TextBoxNew(this.components);
-            this.Label28 = new System.Windows.Forms.Label();
             this.Label36 = new System.Windows.Forms.Label();
             this.Label33 = new System.Windows.Forms.Label();
             this.Label35 = new System.Windows.Forms.Label();
@@ -121,6 +119,7 @@
             this.btngrabar.Name = "btngrabar";
             this.btngrabar.Size = new System.Drawing.Size(78, 36);
             this.btngrabar.Text = "Grabar";
+            this.btngrabar.Click += new System.EventHandler(this.btngrabar_Click);
             // 
             // groupBox1
             // 
@@ -134,14 +133,16 @@
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label21);
             this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.txtnumero);
             this.groupBox1.Controls.Add(this.txtserie);
             this.groupBox1.Controls.Add(this.txtclienterucdnides);
+            this.groupBox1.Controls.Add(this.txtglosa);
             this.groupBox1.Controls.Add(this.txtclienterucdni);
             this.groupBox1.Location = new System.Drawing.Point(0, 42);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(681, 101);
+            this.groupBox1.Size = new System.Drawing.Size(681, 125);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "datos";
@@ -187,6 +188,7 @@
             this.cbocomprobamte.Name = "cbocomprobamte";
             this.cbocomprobamte.Size = new System.Drawing.Size(252, 21);
             this.cbocomprobamte.TabIndex = 1;
+            this.cbocomprobamte.SelectedIndexChanged += new System.EventHandler(this.cbocomprobamte_SelectedIndexChanged);
             // 
             // txtfechaemision
             // 
@@ -239,7 +241,7 @@
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(47, 48);
+            this.label21.Location = new System.Drawing.Point(43, 48);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(31, 13);
             this.label21.TabIndex = 2;
@@ -254,10 +256,19 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Comprobante";
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(40, 104);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(34, 13);
+            this.label8.TabIndex = 11;
+            this.label8.Text = "Glosa";
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(36, 77);
+            this.label1.Location = new System.Drawing.Point(38, 77);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(38, 13);
             this.label1.TabIndex = 8;
@@ -317,6 +328,24 @@
             this.txtclienterucdnides.Size = new System.Drawing.Size(506, 20);
             this.txtclienterucdnides.TabIndex = 10;
             // 
+            // txtglosa
+            // 
+            this.txtglosa.Contenido = dhsoft.Enums.TipoTexto.NormalText;
+            this.txtglosa.DecimalPrecision = 0;
+            this.txtglosa.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(202)))), ((int)(((byte)(231)))), ((int)(((byte)(254)))));
+            this.txtglosa.DisabledForeColor = System.Drawing.Color.Black;
+            this.txtglosa.Enganche = null;
+            this.txtglosa.EnterEmuleTab = true;
+            this.txtglosa.IsDecimalNegative = false;
+            this.txtglosa.LinkKeyDown = null;
+            this.txtglosa.Location = new System.Drawing.Point(78, 99);
+            this.txtglosa.MaskFormat = null;
+            this.txtglosa.Name = "txtglosa";
+            this.txtglosa.Requiere = false;
+            this.txtglosa.Size = new System.Drawing.Size(597, 20);
+            this.txtglosa.TabIndex = 12;
+            this.txtglosa.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtclienterucdni_KeyDown);
+            // 
             // txtclienterucdni
             // 
             this.txtclienterucdni.Contenido = dhsoft.Enums.TipoTexto.NormalText;
@@ -333,6 +362,7 @@
             this.txtclienterucdni.Requiere = false;
             this.txtclienterucdni.Size = new System.Drawing.Size(89, 20);
             this.txtclienterucdni.TabIndex = 9;
+            this.txtclienterucdni.TextChanged += new System.EventHandler(this.txtclienterucdni_TextChanged);
             this.txtclienterucdni.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtclienterucdni_KeyDown);
             // 
             // label6
@@ -377,7 +407,7 @@
             this.txtunidadmedida.MaskFormat = null;
             this.txtunidadmedida.Name = "txtunidadmedida";
             this.txtunidadmedida.Requiere = false;
-            this.txtunidadmedida.Size = new System.Drawing.Size(279, 20);
+            this.txtunidadmedida.Size = new System.Drawing.Size(273, 20);
             this.txtunidadmedida.TabIndex = 8;
             // 
             // txtproducto
@@ -396,6 +426,7 @@
             this.txtproducto.Requiere = false;
             this.txtproducto.Size = new System.Drawing.Size(95, 20);
             this.txtproducto.TabIndex = 5;
+            this.txtproducto.TextChanged += new System.EventHandler(this.txtproducto_TextChanged);
             this.txtproducto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtproducto_KeyDown);
             // 
             // TxtItNum
@@ -419,17 +450,13 @@
             // GbxResumen
             // 
             this.GbxResumen.Controls.Add(this.Label34);
-            this.GbxResumen.Controls.Add(this.Label40);
-            this.GbxResumen.Controls.Add(this.TxtRsISC);
             this.GbxResumen.Controls.Add(this.Label32);
-            this.GbxResumen.Controls.Add(this.TxtRsValExporta);
             this.GbxResumen.Controls.Add(this.TxtRsBaseImponible);
             this.GbxResumen.Controls.Add(this.TxtRsInAfecta);
             this.GbxResumen.Controls.Add(this.TxtRsIGVMonto);
             this.GbxResumen.Controls.Add(this.TxtRsOtrosTribCarg);
             this.GbxResumen.Controls.Add(this.TxtRsIGVPorc);
             this.GbxResumen.Controls.Add(this.TxtRsExonerada);
-            this.GbxResumen.Controls.Add(this.Label28);
             this.GbxResumen.Controls.Add(this.Label36);
             this.GbxResumen.Controls.Add(this.Label33);
             this.GbxResumen.Controls.Add(this.Label35);
@@ -438,7 +465,7 @@
             this.GbxResumen.Controls.Add(this.ChkOtrosTribCarg);
             this.GbxResumen.Location = new System.Drawing.Point(687, 42);
             this.GbxResumen.Name = "GbxResumen";
-            this.GbxResumen.Size = new System.Drawing.Size(224, 205);
+            this.GbxResumen.Size = new System.Drawing.Size(224, 229);
             this.GbxResumen.TabIndex = 6;
             this.GbxResumen.TabStop = false;
             this.GbxResumen.Text = "Resumen";
@@ -447,71 +474,21 @@
             // 
             this.Label34.AutoSize = true;
             this.Label34.BackColor = System.Drawing.Color.Transparent;
-            this.Label34.Location = new System.Drawing.Point(2, 129);
+            this.Label34.Location = new System.Drawing.Point(2, 96);
             this.Label34.Name = "Label34";
             this.Label34.Size = new System.Drawing.Size(34, 13);
             this.Label34.TabIndex = 16;
             this.Label34.Text = "I.G.V.";
             // 
-            // Label40
-            // 
-            this.Label40.AutoSize = true;
-            this.Label40.BackColor = System.Drawing.Color.Transparent;
-            this.Label40.Location = new System.Drawing.Point(2, 107);
-            this.Label40.Name = "Label40";
-            this.Label40.Size = new System.Drawing.Size(33, 13);
-            this.Label40.TabIndex = 14;
-            this.Label40.Text = "I.S.C.";
-            // 
-            // TxtRsISC
-            // 
-            this.TxtRsISC.Contenido = dhsoft.Enums.TipoTexto.OnlyDecimal;
-            this.TxtRsISC.DecimalPrecision = 2;
-            this.TxtRsISC.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(202)))), ((int)(((byte)(231)))), ((int)(((byte)(254)))));
-            this.TxtRsISC.DisabledForeColor = System.Drawing.Color.Black;
-            this.TxtRsISC.Enabled = false;
-            this.TxtRsISC.Enganche = null;
-            this.TxtRsISC.EnterEmuleTab = true;
-            this.TxtRsISC.IsDecimalNegative = false;
-            this.TxtRsISC.LinkKeyDown = null;
-            this.TxtRsISC.Location = new System.Drawing.Point(113, 104);
-            this.TxtRsISC.MaskFormat = "";
-            this.TxtRsISC.Name = "TxtRsISC";
-            this.TxtRsISC.Requiere = false;
-            this.TxtRsISC.Size = new System.Drawing.Size(105, 20);
-            this.TxtRsISC.TabIndex = 15;
-            this.TxtRsISC.Text = "0.00";
-            this.TxtRsISC.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
             // Label32
             // 
             this.Label32.AutoSize = true;
             this.Label32.BackColor = System.Drawing.Color.Transparent;
-            this.Label32.Location = new System.Drawing.Point(2, 63);
+            this.Label32.Location = new System.Drawing.Point(2, 49);
             this.Label32.Name = "Label32";
             this.Label32.Size = new System.Drawing.Size(58, 13);
             this.Label32.TabIndex = 10;
             this.Label32.Text = "Exonerada";
-            // 
-            // TxtRsValExporta
-            // 
-            this.TxtRsValExporta.Contenido = dhsoft.Enums.TipoTexto.OnlyDecimal;
-            this.TxtRsValExporta.DecimalPrecision = 2;
-            this.TxtRsValExporta.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(202)))), ((int)(((byte)(231)))), ((int)(((byte)(254)))));
-            this.TxtRsValExporta.DisabledForeColor = System.Drawing.Color.Black;
-            this.TxtRsValExporta.Enabled = false;
-            this.TxtRsValExporta.Enganche = null;
-            this.TxtRsValExporta.EnterEmuleTab = true;
-            this.TxtRsValExporta.IsDecimalNegative = false;
-            this.TxtRsValExporta.LinkKeyDown = null;
-            this.TxtRsValExporta.Location = new System.Drawing.Point(113, 17);
-            this.TxtRsValExporta.MaskFormat = "";
-            this.TxtRsValExporta.Name = "TxtRsValExporta";
-            this.TxtRsValExporta.Requiere = false;
-            this.TxtRsValExporta.Size = new System.Drawing.Size(105, 20);
-            this.TxtRsValExporta.TabIndex = 7;
-            this.TxtRsValExporta.Text = "0.00";
-            this.TxtRsValExporta.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // TxtRsBaseImponible
             // 
@@ -525,7 +502,7 @@
             this.TxtRsBaseImponible.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtRsBaseImponible.IsDecimalNegative = false;
             this.TxtRsBaseImponible.LinkKeyDown = null;
-            this.TxtRsBaseImponible.Location = new System.Drawing.Point(113, 39);
+            this.TxtRsBaseImponible.Location = new System.Drawing.Point(113, 25);
             this.TxtRsBaseImponible.MaskFormat = "";
             this.TxtRsBaseImponible.Name = "TxtRsBaseImponible";
             this.TxtRsBaseImponible.Requiere = false;
@@ -545,7 +522,7 @@
             this.TxtRsInAfecta.EnterEmuleTab = true;
             this.TxtRsInAfecta.IsDecimalNegative = false;
             this.TxtRsInAfecta.LinkKeyDown = null;
-            this.TxtRsInAfecta.Location = new System.Drawing.Point(113, 82);
+            this.TxtRsInAfecta.Location = new System.Drawing.Point(113, 68);
             this.TxtRsInAfecta.MaskFormat = "";
             this.TxtRsInAfecta.Name = "TxtRsInAfecta";
             this.TxtRsInAfecta.Requiere = false;
@@ -566,7 +543,7 @@
             this.TxtRsIGVMonto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtRsIGVMonto.IsDecimalNegative = false;
             this.TxtRsIGVMonto.LinkKeyDown = null;
-            this.TxtRsIGVMonto.Location = new System.Drawing.Point(113, 126);
+            this.TxtRsIGVMonto.Location = new System.Drawing.Point(113, 91);
             this.TxtRsIGVMonto.MaskFormat = "";
             this.TxtRsIGVMonto.Name = "TxtRsIGVMonto";
             this.TxtRsIGVMonto.Requiere = false;
@@ -586,7 +563,7 @@
             this.TxtRsOtrosTribCarg.EnterEmuleTab = true;
             this.TxtRsOtrosTribCarg.IsDecimalNegative = false;
             this.TxtRsOtrosTribCarg.LinkKeyDown = null;
-            this.TxtRsOtrosTribCarg.Location = new System.Drawing.Point(113, 147);
+            this.TxtRsOtrosTribCarg.Location = new System.Drawing.Point(113, 112);
             this.TxtRsOtrosTribCarg.MaskFormat = "";
             this.TxtRsOtrosTribCarg.Name = "TxtRsOtrosTribCarg";
             this.TxtRsOtrosTribCarg.Requiere = false;
@@ -606,7 +583,7 @@
             this.TxtRsIGVPorc.EnterEmuleTab = true;
             this.TxtRsIGVPorc.IsDecimalNegative = false;
             this.TxtRsIGVPorc.LinkKeyDown = null;
-            this.TxtRsIGVPorc.Location = new System.Drawing.Point(41, 126);
+            this.TxtRsIGVPorc.Location = new System.Drawing.Point(41, 91);
             this.TxtRsIGVPorc.MaskFormat = "";
             this.TxtRsIGVPorc.Name = "TxtRsIGVPorc";
             this.TxtRsIGVPorc.Requiere = false;
@@ -626,7 +603,7 @@
             this.TxtRsExonerada.EnterEmuleTab = true;
             this.TxtRsExonerada.IsDecimalNegative = false;
             this.TxtRsExonerada.LinkKeyDown = null;
-            this.TxtRsExonerada.Location = new System.Drawing.Point(113, 60);
+            this.TxtRsExonerada.Location = new System.Drawing.Point(113, 46);
             this.TxtRsExonerada.MaskFormat = "";
             this.TxtRsExonerada.Name = "TxtRsExonerada";
             this.TxtRsExonerada.Requiere = false;
@@ -635,21 +612,11 @@
             this.TxtRsExonerada.Text = "0.00";
             this.TxtRsExonerada.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // Label28
-            // 
-            this.Label28.AutoSize = true;
-            this.Label28.BackColor = System.Drawing.Color.Transparent;
-            this.Label28.Location = new System.Drawing.Point(2, 20);
-            this.Label28.Name = "Label28";
-            this.Label28.Size = new System.Drawing.Size(88, 13);
-            this.Label28.TabIndex = 6;
-            this.Label28.Text = "Val. Fact. Export.";
-            // 
             // Label36
             // 
             this.Label36.AutoSize = true;
             this.Label36.BackColor = System.Drawing.Color.Transparent;
-            this.Label36.Location = new System.Drawing.Point(3, 176);
+            this.Label36.Location = new System.Drawing.Point(3, 141);
             this.Label36.Name = "Label36";
             this.Label36.Size = new System.Drawing.Size(69, 13);
             this.Label36.TabIndex = 22;
@@ -659,7 +626,7 @@
             // 
             this.Label33.AutoSize = true;
             this.Label33.BackColor = System.Drawing.Color.Transparent;
-            this.Label33.Location = new System.Drawing.Point(2, 85);
+            this.Label33.Location = new System.Drawing.Point(2, 71);
             this.Label33.Name = "Label33";
             this.Label33.Size = new System.Drawing.Size(46, 13);
             this.Label33.TabIndex = 12;
@@ -669,7 +636,7 @@
             // 
             this.Label35.AutoSize = true;
             this.Label35.BackColor = System.Drawing.Color.Transparent;
-            this.Label35.Location = new System.Drawing.Point(81, 129);
+            this.Label35.Location = new System.Drawing.Point(81, 94);
             this.Label35.Name = "Label35";
             this.Label35.Size = new System.Drawing.Size(15, 13);
             this.Label35.TabIndex = 18;
@@ -687,7 +654,7 @@
             this.TxtRsImporteTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtRsImporteTotal.IsDecimalNegative = false;
             this.TxtRsImporteTotal.LinkKeyDown = null;
-            this.TxtRsImporteTotal.Location = new System.Drawing.Point(94, 171);
+            this.TxtRsImporteTotal.Location = new System.Drawing.Point(94, 136);
             this.TxtRsImporteTotal.MaskFormat = "";
             this.TxtRsImporteTotal.Name = "TxtRsImporteTotal";
             this.TxtRsImporteTotal.Requiere = false;
@@ -700,7 +667,7 @@
             // 
             this.Label31.AutoSize = true;
             this.Label31.BackColor = System.Drawing.Color.Transparent;
-            this.Label31.Location = new System.Drawing.Point(2, 41);
+            this.Label31.Location = new System.Drawing.Point(2, 27);
             this.Label31.Name = "Label31";
             this.Label31.Size = new System.Drawing.Size(104, 13);
             this.Label31.TabIndex = 8;
@@ -710,7 +677,7 @@
             // 
             this.ChkOtrosTribCarg.AutoSize = true;
             this.ChkOtrosTribCarg.BackColor = System.Drawing.Color.Transparent;
-            this.ChkOtrosTribCarg.Location = new System.Drawing.Point(4, 150);
+            this.ChkOtrosTribCarg.Location = new System.Drawing.Point(4, 115);
             this.ChkOtrosTribCarg.Name = "ChkOtrosTribCarg";
             this.ChkOtrosTribCarg.Size = new System.Drawing.Size(113, 17);
             this.ChkOtrosTribCarg.TabIndex = 20;
@@ -735,7 +702,7 @@
             this.gbdetalle.Controls.Add(this.txtproducto);
             this.gbdetalle.Controls.Add(this.txtunidadmedida);
             this.gbdetalle.Controls.Add(this.label6);
-            this.gbdetalle.Location = new System.Drawing.Point(0, 149);
+            this.gbdetalle.Location = new System.Drawing.Point(0, 173);
             this.gbdetalle.Name = "gbdetalle";
             this.gbdetalle.Size = new System.Drawing.Size(681, 98);
             this.gbdetalle.TabIndex = 1;
@@ -876,8 +843,9 @@
             // 
             // BtnDtGrabar
             // 
+            this.BtnDtGrabar.Image = global::interfacedsk.Properties.Resources.btnDetAgregar;
             this.BtnDtGrabar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnDtGrabar.Location = new System.Drawing.Point(142, 253);
+            this.BtnDtGrabar.Location = new System.Drawing.Point(142, 273);
             this.BtnDtGrabar.Name = "BtnDtGrabar";
             this.BtnDtGrabar.Size = new System.Drawing.Size(70, 23);
             this.BtnDtGrabar.TabIndex = 15;
@@ -888,8 +856,9 @@
             // 
             // BtnDtNuevo
             // 
+            this.BtnDtNuevo.Image = global::interfacedsk.Properties.Resources.btnDetNuevo;
             this.BtnDtNuevo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnDtNuevo.Location = new System.Drawing.Point(4, 253);
+            this.BtnDtNuevo.Location = new System.Drawing.Point(4, 273);
             this.BtnDtNuevo.Name = "BtnDtNuevo";
             this.BtnDtNuevo.Size = new System.Drawing.Size(70, 23);
             this.BtnDtNuevo.TabIndex = 2;
@@ -900,8 +869,9 @@
             // 
             // BtnDtEliminar
             // 
+            this.BtnDtEliminar.Image = global::interfacedsk.Properties.Resources.btnDetQuitar;
             this.BtnDtEliminar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnDtEliminar.Location = new System.Drawing.Point(211, 253);
+            this.BtnDtEliminar.Location = new System.Drawing.Point(211, 273);
             this.BtnDtEliminar.Name = "BtnDtEliminar";
             this.BtnDtEliminar.Size = new System.Drawing.Size(70, 23);
             this.BtnDtEliminar.TabIndex = 63;
@@ -912,8 +882,9 @@
             // 
             // BtnDtEditar
             // 
+            this.BtnDtEditar.Image = global::interfacedsk.Properties.Resources.btnDetModificar;
             this.BtnDtEditar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnDtEditar.Location = new System.Drawing.Point(73, 253);
+            this.BtnDtEditar.Location = new System.Drawing.Point(73, 273);
             this.BtnDtEditar.Name = "BtnDtEditar";
             this.BtnDtEditar.Size = new System.Drawing.Size(70, 23);
             this.BtnDtEditar.TabIndex = 62;
@@ -928,10 +899,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.DgvDetalle.Cursor = System.Windows.Forms.Cursors.Default;
-            this.DgvDetalle.Location = new System.Drawing.Point(0, 282);
+            this.DgvDetalle.Location = new System.Drawing.Point(0, 302);
             this.DgvDetalle.MainView = this.GridView1;
             this.DgvDetalle.Name = "DgvDetalle";
-            this.DgvDetalle.Size = new System.Drawing.Size(903, 233);
+            this.DgvDetalle.Size = new System.Drawing.Size(939, 224);
             this.DgvDetalle.TabIndex = 64;
             this.DgvDetalle.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.GridView1});
@@ -980,7 +951,7 @@
             this.GridView1.Appearance.FocusedRow.Options.UseForeColor = true;
             this.GridView1.Appearance.FooterPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(87)))), ((int)(((byte)(138)))));
             this.GridView1.Appearance.FooterPanel.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(87)))), ((int)(((byte)(138)))));
-            this.GridView1.Appearance.FooterPanel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(235)))), ((int)(((byte)(220)))));
+            this.GridView1.Appearance.FooterPanel.ForeColor = System.Drawing.Color.Black;
             this.GridView1.Appearance.FooterPanel.Options.UseBackColor = true;
             this.GridView1.Appearance.FooterPanel.Options.UseBorderColor = true;
             this.GridView1.Appearance.FooterPanel.Options.UseForeColor = true;
@@ -1065,6 +1036,7 @@
             this.GridView1.OptionsView.EnableAppearanceEvenRow = true;
             this.GridView1.OptionsView.EnableAppearanceOddRow = true;
             this.GridView1.OptionsView.ShowAutoFilterRow = true;
+            this.GridView1.OptionsView.ShowFooter = true;
             this.GridView1.OptionsView.ShowGroupPanel = false;
             this.GridView1.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.GridView1_RowClick);
             // 
@@ -1106,6 +1078,8 @@
             // gridColumn4
             // 
             this.gridColumn4.Caption = "Cantidad";
+            this.gridColumn4.DisplayFormat.FormatString = "n2";
+            this.gridColumn4.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn4.FieldName = "cantidad";
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.OptionsColumn.AllowEdit = false;
@@ -1115,6 +1089,8 @@
             // gridColumn5
             // 
             this.gridColumn5.Caption = "Precio Unitario";
+            this.gridColumn5.DisplayFormat.FormatString = "n2";
+            this.gridColumn5.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn5.FieldName = "precio_unitario";
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.OptionsColumn.AllowEdit = false;
@@ -1125,9 +1101,13 @@
             // gridColumn6
             // 
             this.gridColumn6.Caption = "Total";
+            this.gridColumn6.DisplayFormat.FormatString = "n2";
+            this.gridColumn6.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn6.FieldName = "total_det";
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.OptionsColumn.AllowEdit = false;
+            this.gridColumn6.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "total_det", "{0:n2}")});
             this.gridColumn6.Visible = true;
             this.gridColumn6.VisibleIndex = 6;
             // 
@@ -1155,7 +1135,10 @@
             this.Controls.Add(this.GbxResumen);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.toolStrip1);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frm_facturacion_edicion";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Facturación";
             this.Load += new System.EventHandler(this.frm_facturacion_edicion_Load);
             this.toolStrip1.ResumeLayout(false);
@@ -1196,17 +1179,13 @@
         private dhsoft.TextBoxNew TxtItNum;
         internal System.Windows.Forms.GroupBox GbxResumen;
         internal System.Windows.Forms.Label Label34;
-        internal System.Windows.Forms.Label Label40;
-        internal dhsoft.TextBoxNew TxtRsISC;
         internal System.Windows.Forms.Label Label32;
-        internal dhsoft.TextBoxNew TxtRsValExporta;
         internal dhsoft.TextBoxNew TxtRsBaseImponible;
         internal dhsoft.TextBoxNew TxtRsInAfecta;
         internal dhsoft.TextBoxNew TxtRsIGVMonto;
         internal dhsoft.TextBoxNew TxtRsOtrosTribCarg;
         internal dhsoft.TextBoxNew TxtRsIGVPorc;
         internal dhsoft.TextBoxNew TxtRsExonerada;
-        internal System.Windows.Forms.Label Label28;
         internal System.Windows.Forms.Label Label36;
         internal System.Windows.Forms.Label Label33;
         internal System.Windows.Forms.Label Label35;
@@ -1241,5 +1220,7 @@
         internal dhsoft.TextBoxNew txttipocambio;
         internal System.Windows.Forms.Label label7;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
+        private System.Windows.Forms.Label label8;
+        private dhsoft.TextBoxNew txtglosa;
     }
 }

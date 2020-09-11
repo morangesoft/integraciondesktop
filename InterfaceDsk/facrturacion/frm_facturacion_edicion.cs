@@ -1,6 +1,7 @@
 ﻿using DevExpress.Data.Filtering.Helpers;
 using DevExpress.XtraGrid.Views.BandedGrid.Handler;
 using Entidad;
+using IntegracionCSharp;
 using interfacedsk.busquedas;
 using System;
 using System.Collections.Generic;
@@ -22,10 +23,18 @@ namespace interfacedsk.facrturacion
         }
 
         public bool Es_Nuevo = false;
+        public int idVentaCab;
         string DvtD_OperCodigo = "";
         int unidad_medida_id  ;
         string unidad_medida_fe = "";
         decimal DvtD_IGVTasaPorcentaje;
+        string tipo_afectacion_de_igv = "";
+
+
+        string comprobante_codSunat;
+        string modena_fe;
+        string tipDoccodsunatCliente;
+        decimal total_gratuita;
 
         private void frm_facturacion_edicion_Load(object sender, EventArgs e)
         {
@@ -36,7 +45,109 @@ namespace interfacedsk.facrturacion
             TxtRsIGVPorc.Text =Convert.ToString(DvtD_IGVTasaPorcentaje);
             txtfechaemision.Text = DateTime.Now.ToShortDateString();
             gbdetalle.Enabled = false;
+
+            BtnDtEditar.Enabled = false;
+            BtnDtGrabar.Enabled = false;
+            BtnDtEliminar.Enabled = false;
+
+
+            if (Es_Nuevo == true)
+            {
+
+                cbocomprobamte.Focus();
+            }
+            else
+            {
+                ListarModificar();
+            }
+
         }
+
+
+        public List<Ent_Facturacion> Lista_Modificar = new List<Ent_Facturacion>();
+        public void ListarModificar()
+        {
+            Ent_Facturacion Ent = new Ent_Facturacion();
+            Log_Facturacion log = new Log_Facturacion();
+
+
+
+            Ent.id = idVentaCab;
+
+            try
+            {
+                Lista_Modificar = log.Listar(Ent);
+                if (Lista_Modificar.Count > 0)
+                {
+                    Ent_Facturacion Enti = new Ent_Facturacion();
+                    Enti = Lista_Modificar[0];
+
+
+                    idVentaCab   = Enti.id ;
+                    cbocomprobamte.SelectedValue = Enti.comprobante_id;
+         
+                    comprobante_codSunat  = Enti.comprobante_codSunat;
+                    cbomoneda.SelectedValue = Enti.modena_id;
+                    modena_fe = Enti.modena_fe;
+
+                    txttipocambio.Text = Convert.ToString(Enti.tipo_cambio_monto);
+                    txtserie.Text = Enti.serie;
+                    txtnumero.Text = Enti.numero;
+                    txtfechaemision.Text = Convert.ToString(Enti.fechaEmision);
+
+                    txtclienterucdni.Tag= Enti.cliente_id;
+                    txtclienterucdni.Text = Enti.cliente_dniRuc;
+                    txtclienterucdnides.Text = Enti.cliente_desc;
+                    tipDoccodsunat = Enti.cliente_tipo_doc_codSunat;
+
+                    txtglosa.Text   = Enti.glosa;
+
+                    TxtRsBaseImponible.Text     =  Convert.ToString(Enti.total_gravada);
+                    TxtRsInAfecta.Text   =  Convert.ToString(Enti.total_inafecta);
+                    TxtRsExonerada.Text  =    Convert.ToString(Enti.total_exonerada);
+                    TxtRsIGVMonto.Text  =   Convert.ToString(Enti.total_igv);
+                    total_gratuita = Enti.total_gratuita;
+                    TxtRsOtrosTribCarg.Text   =   Convert.ToString(Enti.total_otros_cargos);
+                    TxtRsImporteTotal.Text =    Convert.ToString(Enti.total_cab);
+
+
+
+                    //listar detalle
+                    //Logica_Movimiento_Cab log_det_con = new Logica_Movimiento_Cab();
+                    DgvDetalle.DataSource = null;
+                    Detalles = log.Listar_Det(Enti);
+                    if (Detalles.Count > 0)
+                    {
+                        DgvDetalle.DataSource = Detalles;
+                    }
+
+
+
+
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Accion.ErrorSistema(ex.Message);
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         private List<Ent_Comprobante> ListEmp = new List<Ent_Comprobante>();
         public void IniciarCombo()
@@ -113,6 +224,9 @@ namespace interfacedsk.facrturacion
                                 txtclienterucdni.Tag = Entidad.usuario_id;
                                 txtclienterucdni.Text = Entidad.usuario_dni;
                                 txtclienterucdnides.Text = Entidad.usuario_apellido + " "+ Entidad.usuario_nombre;
+                                tipDoccodsunat = Entidad.tipDoccodsunat;
+
+
                             }
                         }
                     }
@@ -153,7 +267,7 @@ namespace interfacedsk.facrturacion
                             txtclienterucdni.Tag = T.usuario_id;
                             txtclienterucdni.Text = T.usuario_dni;
                             txtclienterucdnides.Text = T.usuario_apellido + " " + T.usuario_nombre;
-
+                            tipDoccodsunat = T.tipDoccodsunat;
                         }
                     }
 
@@ -180,6 +294,11 @@ namespace interfacedsk.facrturacion
                 gbdetalle.Enabled = true;
                 cbotipo.SelectedIndex = 0;
                 LimpiarDetalle();
+
+                BtnDtNuevo.Enabled = false;
+                BtnDtEditar.Enabled = false;
+                BtnDtGrabar.Enabled = true;
+                BtnDtEliminar.Enabled = false;
                 txtproducto.Focus();
 
             }
@@ -212,6 +331,8 @@ namespace interfacedsk.facrturacion
         {
             try
             {
+                limpiarProducto();
+                txtproducto.ResetText();
                 if (cbotipo.SelectedIndex == 0)
                 {
                     lbldescripcionproser.Text = "Producto";
@@ -220,6 +341,7 @@ namespace interfacedsk.facrturacion
                 {
                     lbldescripcionproser.Text = "Servicio";
                 }
+                txtproducto.Focus();
 
             }     
             catch (Exception ex)
@@ -256,6 +378,8 @@ namespace interfacedsk.facrturacion
                                         unidad_medida_id = Entidad.idUnidadMedida;
                                         txtunidadmedida.Text = Entidad.descripcionUnm;
                                         unidad_medida_fe = Entidad.unm_fe;
+                                        tipo_afectacion_de_igv = Entidad.idAfectacionIgv;
+
                                         TxtPrecunitario.Text =Convert.ToString(Entidad.precioProducto);
                                         DvtD_OperCodigo = Entidad.afecIgvTabla;
      
@@ -297,6 +421,8 @@ namespace interfacedsk.facrturacion
                                         unidad_medida_id = Entidad.idUnidadMedida;
                                         txtunidadmedida.Text = Entidad.descripcionUnm;
                                         unidad_medida_fe = Entidad.unm_fe;
+                                        tipo_afectacion_de_igv = Entidad.idAfectacionIgv;
+
                                         TxtPrecunitario.Text = Convert.ToString(Entidad.precioServicio);
                                         DvtD_OperCodigo = Entidad.afecIgvTabla;
                                     }
@@ -350,6 +476,8 @@ namespace interfacedsk.facrturacion
                             unidad_medida_id = T.idUnidadMedida;
                             txtunidadmedida.Text = T.descripcionUnm;
                             unidad_medida_fe = T.unm_fe;
+                            tipo_afectacion_de_igv = T.idAfectacionIgv;
+
                             TxtPrecunitario.Text = Convert.ToString(T.precioProducto);
                             DvtD_OperCodigo = T.afecIgvTabla;
                         }
@@ -394,6 +522,8 @@ namespace interfacedsk.facrturacion
                             unidad_medida_id = T.idUnidadMedida;
                             txtunidadmedida.Text = T.descripcionUnm;
                             unidad_medida_fe = T.unm_fe;
+                            tipo_afectacion_de_igv = T.idAfectacionIgv;
+
                             TxtPrecunitario.Text = Convert.ToString(T.precioServicio);
                             DvtD_OperCodigo = T.afecIgvTabla;
                         }
@@ -455,41 +585,75 @@ namespace interfacedsk.facrturacion
             try
             {
 
-                Ent_Facturacion ItemDetalle = new Ent_Facturacion();
+                if (VerificarDetalle())
+                {
+                    Ent_Facturacion ItemDetalle = new Ent_Facturacion();
                 
-                ItemDetalle.id_det = Convert.ToInt32(TxtItNum.Text);
-                ItemDetalle.id_tipo_bien_servicio = Convert.ToInt32(cbotipo.SelectedValue.ToString());
-                ItemDetalle.tipo_bien_servicio_desc = cbotipo.SelectedText.ToString() ;
+                    ItemDetalle.id_det = Convert.ToInt32(TxtItNum.Text);
+                    ItemDetalle.id_tipo_bien_servicio = Convert.ToInt32(cbotipo.SelectedValue.ToString());
+                    ItemDetalle.tipo_bien_servicio_desc = cbotipo.GetItemText(this.cbotipo.SelectedItem);  //cbotipo.Text ;
 
-                ItemDetalle.prod_serv_id =Convert.ToInt32(txtproducto.Tag.ToString());
-                ItemDetalle.productocod = txtproducto.Text;
-                ItemDetalle.productodesc = txtproductodesc.Text;
-                ItemDetalle.unidad_medida_id = unidad_medida_id;
-                ItemDetalle.unidad_medida_desc = txtunidadmedida.Text.Trim();
-                ItemDetalle.unidad_medida_fe = unidad_medida_fe;
-                ItemDetalle.DvtD_OperCodigo = DvtD_OperCodigo;
-                ItemDetalle.cantidad = Convert.ToDecimal(TxtItCantidad.Text);
-                ItemDetalle.valor_unitario =Convert.ToDecimal(TxtPrecunitario.Text) / 1 + DvtD_IGVTasaPorcentaje;
-                ItemDetalle.precio_unitario = Convert.ToDecimal(TxtPrecunitario.Text);
-                ItemDetalle.DvtD_IGVTasaPorcentaje = DvtD_IGVTasaPorcentaje;
-                ItemDetalle.total_det = Convert.ToDecimal(TxtItImporte.Text);
+                    ItemDetalle.prod_serv_id =Convert.ToInt32(txtproducto.Tag.ToString());
+                    ItemDetalle.productocod = txtproducto.Text;
+                    ItemDetalle.productodesc = txtproductodesc.Text;
+                    ItemDetalle.unidad_medida_id = unidad_medida_id;
+                    ItemDetalle.unidad_medida_desc = txtunidadmedida.Text.Trim();
+                    ItemDetalle.unidad_medida_fe = unidad_medida_fe;
+                    ItemDetalle.tipo_afectacion_de_igv = tipo_afectacion_de_igv;
 
-                if (Es_Nuevo_Det)
-                {
-                    Detalles.Add(ItemDetalle);
-                    Es_Nuevo_Det = false;
-                    gbdetalle.Enabled = false;
-                    BtnDtNuevo.Focus();
-                }
-                else if (Es_Modificar_Det)
-                {
-                    Detalles[Convert.ToInt32(TxtItNum.Text) - 1] = ItemDetalle;
-                    Es_Modificar_Det = false;
-                }
+                    ItemDetalle.DvtD_OperCodigo = DvtD_OperCodigo;
+
+                    ItemDetalle.cantidad = Convert.ToDecimal(TxtItCantidad.Text);
+
+                    if (ItemDetalle.DvtD_OperCodigo == "0565")
+                    {
+                        ItemDetalle.valor_unitario =Math.Round(Convert.ToDecimal(TxtPrecunitario.Text) / (1 +(DvtD_IGVTasaPorcentaje/100)),2) ;
+                    }
+                    else
+                    {
+                        ItemDetalle.valor_unitario = Convert.ToDecimal(TxtPrecunitario.Text);
+                    }
+                     
+                    ItemDetalle.precio_unitario = Convert.ToDecimal(TxtPrecunitario.Text);
+           
+
+                    if (ItemDetalle.DvtD_OperCodigo == "0565")
+                    {
+                        ItemDetalle.DvtD_IGVTasaPorcentaje = DvtD_IGVTasaPorcentaje; ;
+                    }
+                    else
+                    {
+                        ItemDetalle.DvtD_IGVTasaPorcentaje = 0;
+                    }
+
+
+                    ItemDetalle.total_det = Convert.ToDecimal(TxtItImporte.Text);
+
+                    if (Es_Nuevo_Det)
+                    {
+                        Detalles.Add(ItemDetalle);
+                        Es_Nuevo_Det = false;
+                        gbdetalle.Enabled = false;
+
+                        BtnDtNuevo.Enabled = true;
+                        BtnDtEditar.Enabled = false;
+                        BtnDtGrabar.Enabled = false;
+                        BtnDtEliminar.Enabled = false;
+
+                        BtnDtNuevo.Focus();
+                    }
+                    else if (Es_Modificar_Det)
+                    {
+                        Detalles[Convert.ToInt32(TxtItNum.Text) - 1] = ItemDetalle;
+                        Es_Modificar_Det = false;
+                    }
   
-                UpdateGrilla();
-                MostrarResumen();
+                    UpdateGrilla();
+                    MostrarResumen();
        
+                }
+
+
 
 
             }    
@@ -547,11 +711,11 @@ namespace interfacedsk.facrturacion
 
                 MImportTot = MValorFactExport  + MBaseImponible + MExonerada + MInafecta + MISC  + MIGV + MOtrosTrib;
                 
-                TxtRsValExporta.Text =Convert.ToString(MValorFactExport);
+                //TxtRsValExporta.Text =Convert.ToString(MValorFactExport);
                 TxtRsBaseImponible.Text = Convert.ToString(MBaseImponible);
                 TxtRsExonerada.Text = Convert.ToString(MExonerada);
                 TxtRsInAfecta.Text = Convert.ToString(MInafecta);
-                TxtRsISC.Text = Convert.ToString(MISC);
+                //TxtRsISC.Text = Convert.ToString(MISC);
                 TxtRsIGVMonto.Text = Convert.ToString(MIGV);
                 TxtRsImporteTotal.Text = Convert.ToString(MImportTot);
                 //CalcularIGV();
@@ -596,6 +760,9 @@ namespace interfacedsk.facrturacion
         {
             if (cbomoneda.SelectedIndex == 0)
             {
+
+
+
                 txttipocambio.Text = "1.000";
                 txttipocambio.Enabled = false;
             }
@@ -605,30 +772,65 @@ namespace interfacedsk.facrturacion
                 txttipocambio.Enabled = true;
                 txttipocambio.Focus();
             }
+
+
+            try
+            {
+                if (cbocomprobamte.Items.Count > 0)
+                {
+                    List<Ent_Moneda> Lista = new List<Ent_Moneda>();
+
+                    Log_Moneda LogEmp = new Log_Moneda();
+                    Ent_Moneda Ent = new Ent_Moneda();
+                    Ent.id = Convert.ToInt32(cbocomprobamte.SelectedValue.ToString());
+
+
+                    Lista = LogEmp.Listar(Ent);
+
+                    modena_fe = Lista[0].codsunat;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Accion.ErrorSistema(ex.Message);
+            }
+
+
+
         }
 
         private void GridView1_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
         {
             try
             {
-                if (Detalles.Count > 0)
+                if (Detalles.Count > 0 & GridView1.GetFocusedDataSourceRowIndex() > -1)
                 {
                     Ent_Facturacion Entidad = new Ent_Facturacion();
  
                     Entidad = Detalles[GridView1.GetFocusedDataSourceRowIndex()];
 
                     TxtItNum.Text = Convert.ToString(Entidad.id_det);
+                    cbotipo.SelectedValue=Entidad.id_tipo_bien_servicio;
+
                     txtproducto.Tag = Entidad.prod_serv_id;
                     txtproducto.Text = Entidad.productocod;
                     txtproductodesc.Text = Entidad.productodesc;
                     unidad_medida_id = Entidad.unidad_medida_id;
                     txtunidadmedida.Text = Entidad.unidad_medida_desc;
                     unidad_medida_fe = Entidad.unidad_medida_fe;
+                    tipo_afectacion_de_igv  = Entidad.tipo_afectacion_de_igv;
+
                     DvtD_OperCodigo = Entidad.DvtD_OperCodigo;
                     TxtItCantidad.Text = Convert.ToString(Entidad.cantidad);
                     TxtPrecunitario.Text = Convert.ToString(Entidad.precio_unitario);
                     TxtItImporte.Text = Convert.ToString(Entidad.total_det);
                     cbotipo.SelectedValue = Entidad.id_tipo_bien_servicio;
+
+                    BtnDtNuevo.Enabled = true;
+                    BtnDtEditar.Enabled = true;
+                    BtnDtGrabar.Enabled = false;
+                    BtnDtEliminar.Enabled = true;
 
                     gbdetalle.Enabled = false;
 
@@ -648,6 +850,12 @@ namespace interfacedsk.facrturacion
             try
             {
                 Es_Modificar_Det = true;
+                gbdetalle.Enabled = true;
+                BtnDtEditar.Enabled = false;
+                BtnDtGrabar.Enabled = true;
+
+                cbotipo.Focus();
+
 
             }
             catch (Exception ex)
@@ -728,6 +936,256 @@ namespace interfacedsk.facrturacion
                 }
 
             }
+        }
+
+        public bool VerificarCabecera()
+        {
+            if (string.IsNullOrEmpty(txtserie.Text.Trim()))
+            {
+                Accion.Advertencia("Debe ingresar una serie");
+                txtserie.Focus();
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(txtnumero.Text.Trim()))
+            {
+                Accion.Advertencia("Debe ingresar un número");
+                txtnumero.Focus();
+                return false;
+            }
+
+            if (txtfechaemision.Text == "" || txtfechaemision.Text == "  /  /")
+            {
+                Accion.Advertencia("Debe ingresar una fecha de emisión");
+                txtfechaemision.Focus();
+                return false;
+            }
+
+            if (Detalles.Count == 0)
+            {
+                Accion.Advertencia("Debe ingresar al menos un detalle");
+                BtnDtNuevo.Focus();
+                return false;
+            }
+
+
+            return true;
+        }
+
+        public bool VerificarDetalle()
+        {
+            if (string.IsNullOrEmpty(txtproductodesc.Text.Trim()))
+            {
+                Accion.Advertencia("Debe ingresar un producto");
+                txtproducto.Focus();
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(txtunidadmedida.Text.Trim()))
+            {
+                Accion.Advertencia("Debe asignar una unidad de medida a este producto,revise la configuración del producto");
+                txtproducto.Focus();
+                return false;
+            }
+            if (string.IsNullOrEmpty(TxtItCantidad.Text.Trim()) || TxtItCantidad.Text =="0.00")
+            {
+                Accion.Advertencia("Debe ingresar una cantidad");
+                TxtItCantidad.Focus();
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(TxtPrecunitario.Text.Trim()) || TxtPrecunitario.Text =="0.00")
+            {
+                Accion.Advertencia("Debe ingresar un precio unitario,revise la configuración del producto");
+                TxtPrecunitario.Focus();
+                return false;
+            }
+ 
+
+            return true;
+        }
+
+
+        private void btngrabar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (VerificarCabecera())
+                {
+                    Ent_Facturacion Ent = new Ent_Facturacion();
+                    Log_Facturacion Log = new Log_Facturacion();
+
+                    Ent.id = idVentaCab;
+                    Ent.comprobante_id = Convert.ToInt32(cbocomprobamte.SelectedValue.ToString());
+                    Ent.comprobante_codSunat = comprobante_codSunat;
+
+
+                    Ent.modena_id = Convert.ToInt32(cbomoneda.SelectedValue.ToString());
+                    Ent.modena_fe = modena_fe;
+
+
+                    Ent.tipo_cambio_monto =Convert.ToDecimal(txttipocambio.Text);
+                    Ent.serie = txtserie.Text;
+                    Ent.numero = txtnumero.Text;
+                    Ent.fechaEmision =Convert.ToDateTime(txtfechaemision.Text);
+                    Ent.cliente_id = Convert.ToInt32(txtclienterucdni.Tag.ToString());
+
+                    Ent.glosa = txtglosa.Text.Trim();
+
+                    Ent.total_gravada = Convert.ToDecimal(TxtRsBaseImponible.Text);
+                    Ent.total_inafecta = Convert.ToDecimal(TxtRsInAfecta.Text);
+                    Ent.total_exonerada = Convert.ToDecimal(TxtRsExonerada.Text);
+                    Ent.total_igv = Convert.ToDecimal(TxtRsIGVMonto.Text);
+                    Ent.total_gratuita = 0;
+                    Ent.total_otros_cargos = Convert.ToDecimal(TxtRsOtrosTribCarg.Text);
+                    Ent.total_cab = Convert.ToDecimal(TxtRsImporteTotal.Text);
+
+                    Ent.DetalleADM = Detalles;
+                    
+                    if (Es_Nuevo ==true)
+                    {
+                        if (Log.Insertar(Ent))
+                        {
+                            //Despues de guardar se envia al servicio
+
+                            Envia_Comprobante_Electronico_A_Servicio(Ent);
+                            //
+                            Accion.ExitoGuardar();
+                            this.Close();
+                        }
+                    }
+                    else
+                    {
+                        if (Log.Modificar(Ent))
+                        {
+                            Accion.ExitoModificar();
+                            this.Close();
+                        }
+                    }
+
+                }
+
+
+            }
+            catch(Exception ex)
+            {
+                Accion.ErrorSistema(ex.Message);
+            }
+        }
+
+        void Envia_Comprobante_Electronico_A_Servicio(Ent_Facturacion entidad)
+        {
+            Invoice param = new Invoice();
+
+
+
+
+        }
+
+        Invoice Convertir_Cliente_Objet(Ent_Facturacion Documento_Cliente)
+        {
+            Invoice Doc = new Invoice();
+            Doc.operacion =  "" ;
+            Doc.tipo_de_comprobante = ""  ;
+            Doc.serie = Documento_Cliente.serie;
+            Doc.numero =Convert.ToInt32(Documento_Cliente.numero);
+            Doc.sunat_transaction =  "1" ; //1 = VENTA INTERNA 
+            Doc.cliente_tipo_de_documento =   ;
+            Doc.cliente_numero_de_documento =   ;
+            Doc.cliente_denominacion =   ;
+            Doc.cliente_direccion =   ;
+            Doc.cliente_email =   ;
+            Doc.cliente_email_1 =   ;
+            Doc.cliente_email_2 =   ;
+            Doc.fecha_de_emision =   ;
+            Doc.fecha_de_vencimiento =   ;
+            Doc.moneda =   ;
+            Doc.tipo_de_cambio =   ;
+            Doc.porcentaje_de_igv =   ;
+            Doc.descuento_global =   ;
+            Doc.total_descuento =   ;
+            Doc.total_anticipo =   ;
+            Doc.total_gravada =   ;
+            Doc.total_inafecta =   ;
+            Doc.total_exonerada =   ;
+            Doc.total_igv =   ;
+            Doc.total_gratuita =   ;
+            Doc.total_otros_cargos =   ;
+            Doc.total =   ;
+            Doc.percepcion_tipo =   ;
+            Doc.percepcion_base_imponible =   ;
+            Doc.total_percepcion =   ;
+            Doc.detraccion =   ;
+            Doc.observaciones =   ;
+            Doc.documento_que_se_modifica_tipo =   ;
+            Doc.documento_que_se_modifica_serie =   ;
+            Doc.documento_que_se_modifica_numero =   ;
+            Doc.tipo_de_nota_de_credito =   ;
+            Doc.tipo_de_nota_de_debito =   ;
+            Doc.enviar_automaticamente_a_la_sunat =   ;
+            Doc.enviar_automaticamente_al_cliente =   ;
+            Doc.codigo_unico =   ;
+            Doc.condiciones_de_pago =   ;
+            Doc.medio_de_pago =   ;
+            Doc.placa_vehiculo =   ;
+            Doc.orden_compra_servicio =   ;
+            Doc.tabla_personalizada_codigo =   ;
+            Doc.formato_de_pdf =   ;
+
+            //public List<Items> items 
+
+
+        }
+
+            private void cbocomprobamte_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (cbocomprobamte.Items.Count > 0)
+                {
+                    List<Ent_Comprobante> Lista = new List<Ent_Comprobante>();
+ 
+                    Log_Comprobante LogEmp = new Log_Comprobante();
+                    Ent_Comprobante Ent = new Ent_Comprobante();
+                    Ent.id = Convert.ToInt32(cbocomprobamte.SelectedValue.ToString());
+
+
+                    Lista = LogEmp.Listar(Ent);
+
+                    comprobante_codSunat = Lista[0].codsunat;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Accion.ErrorSistema(ex.Message);
+            }
+        }
+
+        private void txtclienterucdni_TextChanged(object sender, EventArgs e)
+        {
+            if (txtclienterucdni.Focus() == true)
+            {
+                txtclienterucdnides.ResetText();
+            }
+        }
+
+        private void txtproducto_TextChanged(object sender, EventArgs e)
+        {
+            if (txtproducto.Focus() == true)
+            {
+                limpiarProducto();
+            }
+        }
+
+        void limpiarProducto()
+        {
+            txtproductodesc.ResetText();
+            txtunidadmedida.ResetText();
+            TxtItCantidad.Text = "0.00";
+            TxtPrecunitario.Text = "0.00";
+            TxtItImporte.Text = "0.00";
+
         }
     }
 }

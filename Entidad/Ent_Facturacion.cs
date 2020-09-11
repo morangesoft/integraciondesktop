@@ -11,11 +11,24 @@ namespace interfacedsk
 
         public int id { get; set; }
         public int comprobante_id { get; set; }
+        public string comprobante_desc { get; set; }
+        public string comprobante_codSunat { get; set; }
+
         public string serie { get; set; }
         public string numero { get; set; }
         public DateTime fechaEmision { get; set; }
         public int cliente_id { get; set; }
+        public string cliente_desc { get; set; }
+        public string cliente_dniRuc { get; set; }
+        public int cliente_tipo_doc_id { get; set; }
+        public string cliente_tipo_doc_desc { get; set; }
+        public string cliente_tipo_doc_codSunat { get; set; }
+
         public int modena_id { get; set; }
+        public string modena_desc { get; set; }
+        public string modena_fe { get; set; }
+
+        public decimal tipo_cambio_monto { get; set; }
         public decimal DvtD_IGVTasaPorcentaje { get; set; }
         public decimal total_gravada { get; set; }
         public decimal total_inafecta { get; set; }
@@ -24,8 +37,11 @@ namespace interfacedsk
         public decimal total_gratuita { get; set; }
         public decimal total_otros_cargos { get; set; }
         public decimal total_cab { get; set; }
+        public bool estado { get; set; }
+        public string glosa { get; set; }
 
-
+        //detalle
+        public List<Ent_Facturacion> DetalleADM { get; set; }
         public int id_det { get; set; }
         public int id_venta_cab { get; set; }
         public int id_tipo_bien_servicio { get; set; }
@@ -41,9 +57,13 @@ namespace interfacedsk
         public decimal valor_unitario { get; set; }
         public decimal precio_unitario { get; set; }
         //public decimal subtotal { get; set; }
+
+        public string tipo_afectacion_de_igv { get; set; }
+        public string afecIgvDescripcion { get; set; }
         public string DvtD_OperCodigo { get; set; }
-        public string tipo_de_igv { get; set; }
-        public decimal igv_det { get; set; }
+
+        public decimal subtotal_det { get; set; }
+        //public decimal igv_det { get; set; }
         public decimal total_det { get; set; }
 
         public decimal subtotal
@@ -98,6 +118,7 @@ namespace interfacedsk
 
             }
         }
+
         public decimal DvtD_ValorFactExportacion
         {
             get
