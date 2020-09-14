@@ -44,5 +44,7 @@ namespace interfacedsk
         public string idAfectacionIgv { get; set; }
         public string afecIgvDescripcion { get; set; }
         public string afecIgvTabla { get; set; }
+        public string tipo_afectacion_de_igv_codNubefact { get; set; }
+
     }
 }

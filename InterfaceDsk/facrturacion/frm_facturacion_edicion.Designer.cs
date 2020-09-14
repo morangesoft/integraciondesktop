@@ -142,7 +142,7 @@
             this.groupBox1.Controls.Add(this.txtclienterucdni);
             this.groupBox1.Location = new System.Drawing.Point(0, 42);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(681, 125);
+            this.groupBox1.Size = new System.Drawing.Size(708, 125);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "datos";
@@ -325,7 +325,7 @@
             this.txtclienterucdnides.MaskFormat = null;
             this.txtclienterucdnides.Name = "txtclienterucdnides";
             this.txtclienterucdnides.Requiere = false;
-            this.txtclienterucdnides.Size = new System.Drawing.Size(506, 20);
+            this.txtclienterucdnides.Size = new System.Drawing.Size(531, 20);
             this.txtclienterucdnides.TabIndex = 10;
             // 
             // txtglosa
@@ -342,7 +342,7 @@
             this.txtglosa.MaskFormat = null;
             this.txtglosa.Name = "txtglosa";
             this.txtglosa.Requiere = false;
-            this.txtglosa.Size = new System.Drawing.Size(597, 20);
+            this.txtglosa.Size = new System.Drawing.Size(622, 20);
             this.txtglosa.TabIndex = 12;
             this.txtglosa.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtclienterucdni_KeyDown);
             // 
@@ -463,7 +463,7 @@
             this.GbxResumen.Controls.Add(this.TxtRsImporteTotal);
             this.GbxResumen.Controls.Add(this.Label31);
             this.GbxResumen.Controls.Add(this.ChkOtrosTribCarg);
-            this.GbxResumen.Location = new System.Drawing.Point(687, 42);
+            this.GbxResumen.Location = new System.Drawing.Point(712, 42);
             this.GbxResumen.Name = "GbxResumen";
             this.GbxResumen.Size = new System.Drawing.Size(224, 229);
             this.GbxResumen.TabIndex = 6;
@@ -704,7 +704,7 @@
             this.gbdetalle.Controls.Add(this.label6);
             this.gbdetalle.Location = new System.Drawing.Point(0, 173);
             this.gbdetalle.Name = "gbdetalle";
-            this.gbdetalle.Size = new System.Drawing.Size(681, 98);
+            this.gbdetalle.Size = new System.Drawing.Size(706, 98);
             this.gbdetalle.TabIndex = 1;
             this.gbdetalle.TabStop = false;
             this.gbdetalle.Text = "detalles";
@@ -838,7 +838,7 @@
             this.txtproductodesc.MaskFormat = null;
             this.txtproductodesc.Name = "txtproductodesc";
             this.txtproductodesc.Requiere = false;
-            this.txtproductodesc.Size = new System.Drawing.Size(283, 20);
+            this.txtproductodesc.Size = new System.Drawing.Size(308, 20);
             this.txtproductodesc.TabIndex = 6;
             // 
             // BtnDtGrabar

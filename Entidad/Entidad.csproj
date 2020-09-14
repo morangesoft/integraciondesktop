@@ -42,7 +42,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Actual_Conexion.cs" />
     <Compile Include="Ent_Comprobante.cs" />
+    <Compile Include="Ent_Datos_Generales.cs" />
     <Compile Include="Ent_Documento.cs" />
     <Compile Include="Ent_Facturacion.cs" />
     <Compile Include="Ent_Inicio_Sesion.cs" />
@@ -50,6 +52,7 @@
     <Compile Include="Ent_Perfil.cs" />
     <Compile Include="Ent_Producto.cs" />
     <Compile Include="Ent_Proveedor.cs" />
+    <Compile Include="Ent_Reportes.cs" />
     <Compile Include="Ent_Servicio.cs" />
     <Compile Include="Ent_Tipo_Producto.cs" />
     <Compile Include="Ent_Unidad_Medida.cs" />

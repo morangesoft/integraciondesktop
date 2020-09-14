@@ -193,6 +193,7 @@ namespace interfacedsk
                                     idAfectacionIgv = Dr.GetString(20),
                                     afecIgvDescripcion = Dr.GetString(21),
                                     afecIgvTabla = Dr.GetString(22),
+                                    tipo_afectacion_de_igv_codNubefact = Dr.GetString(23) 
                                 });
                             }
                         }

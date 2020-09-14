@@ -3,3 +3,4 @@ D:\MorangeSoft\AppDesktopClasic\Entidad\bin\Debug\Entidad.pdb
 D:\MorangeSoft\AppDesktopClasic\Entidad\obj\Debug\Entidad.csproj.CoreCompileInputs.cache
 D:\MorangeSoft\AppDesktopClasic\Entidad\obj\Debug\Entidad.dll
 D:\MorangeSoft\AppDesktopClasic\Entidad\obj\Debug\Entidad.pdb
+D:\MorangeSoft\AppDesktopClasic\Entidad\obj\Debug\Entidad.csprojAssemblyReference.cache

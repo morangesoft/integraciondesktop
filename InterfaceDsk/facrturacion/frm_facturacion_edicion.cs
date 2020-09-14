@@ -1,14 +1,18 @@
 ﻿using DevExpress.Data.Filtering.Helpers;
 using DevExpress.XtraGrid.Views.BandedGrid.Handler;
 using Entidad;
-using IntegracionCSharp;
 using interfacedsk.busquedas;
+using interfacedsk.nube_fact;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Security;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -30,11 +34,15 @@ namespace interfacedsk.facrturacion
         decimal DvtD_IGVTasaPorcentaje;
         string tipo_afectacion_de_igv = "";
 
+        string tipo_afectacion_de_igv_codNubefact;
 
         string comprobante_codSunat;
+        string comprobante_codNubefact;
         string modena_fe;
+        string moneda_codNubefact;
         string tipDoccodsunatCliente;
         decimal total_gratuita;
+ 
 
         private void frm_facturacion_edicion_Load(object sender, EventArgs e)
         {
@@ -98,7 +106,7 @@ namespace interfacedsk.facrturacion
                     txtclienterucdni.Tag= Enti.cliente_id;
                     txtclienterucdni.Text = Enti.cliente_dniRuc;
                     txtclienterucdnides.Text = Enti.cliente_desc;
-                    tipDoccodsunat = Enti.cliente_tipo_doc_codSunat;
+                    tipDoccodsunatCliente = Enti.cliente_tipo_doc_codSunat;
 
                     txtglosa.Text   = Enti.glosa;
 
@@ -224,7 +232,7 @@ namespace interfacedsk.facrturacion
                                 txtclienterucdni.Tag = Entidad.usuario_id;
                                 txtclienterucdni.Text = Entidad.usuario_dni;
                                 txtclienterucdnides.Text = Entidad.usuario_apellido + " "+ Entidad.usuario_nombre;
-                                tipDoccodsunat = Entidad.tipDoccodsunat;
+                                tipDoccodsunatCliente = Entidad.tipDoccodsunat;
 
 
                             }
@@ -267,7 +275,7 @@ namespace interfacedsk.facrturacion
                             txtclienterucdni.Tag = T.usuario_id;
                             txtclienterucdni.Text = T.usuario_dni;
                             txtclienterucdnides.Text = T.usuario_apellido + " " + T.usuario_nombre;
-                            tipDoccodsunat = T.tipDoccodsunat;
+                            tipDoccodsunatCliente = T.tipDoccodsunat;
                         }
                     }
 
@@ -382,7 +390,9 @@ namespace interfacedsk.facrturacion
 
                                         TxtPrecunitario.Text =Convert.ToString(Entidad.precioProducto);
                                         DvtD_OperCodigo = Entidad.afecIgvTabla;
-     
+                                        tipo_afectacion_de_igv_codNubefact = Entidad.tipo_afectacion_de_igv_codNubefact;
+
+
     }
                                 }
                             }
@@ -425,6 +435,8 @@ namespace interfacedsk.facrturacion
 
                                         TxtPrecunitario.Text = Convert.ToString(Entidad.precioServicio);
                                         DvtD_OperCodigo = Entidad.afecIgvTabla;
+                                        tipo_afectacion_de_igv_codNubefact = Entidad.tipo_afectacion_de_igv_codNubefact;
+
                                     }
                                 }
                             }
@@ -480,6 +492,8 @@ namespace interfacedsk.facrturacion
 
                             TxtPrecunitario.Text = Convert.ToString(T.precioProducto);
                             DvtD_OperCodigo = T.afecIgvTabla;
+                            tipo_afectacion_de_igv_codNubefact = T.tipo_afectacion_de_igv_codNubefact;
+
                         }
                     }
 
@@ -526,6 +540,8 @@ namespace interfacedsk.facrturacion
 
                             TxtPrecunitario.Text = Convert.ToString(T.precioServicio);
                             DvtD_OperCodigo = T.afecIgvTabla;
+                            tipo_afectacion_de_igv_codNubefact = T.tipo_afectacion_de_igv_codNubefact;
+
                         }
                     }
 
@@ -600,6 +616,7 @@ namespace interfacedsk.facrturacion
                     ItemDetalle.unidad_medida_desc = txtunidadmedida.Text.Trim();
                     ItemDetalle.unidad_medida_fe = unidad_medida_fe;
                     ItemDetalle.tipo_afectacion_de_igv = tipo_afectacion_de_igv;
+                    ItemDetalle.tipo_afectacion_de_igv_codNubefact = tipo_afectacion_de_igv_codNubefact;
 
                     ItemDetalle.DvtD_OperCodigo = DvtD_OperCodigo;
 
@@ -788,6 +805,9 @@ namespace interfacedsk.facrturacion
                     Lista = LogEmp.Listar(Ent);
 
                     modena_fe = Lista[0].codsunat;
+                    moneda_codNubefact = Lista[0].moneda_codNubefact;
+
+
                 }
 
             }
@@ -820,6 +840,7 @@ namespace interfacedsk.facrturacion
                     txtunidadmedida.Text = Entidad.unidad_medida_desc;
                     unidad_medida_fe = Entidad.unidad_medida_fe;
                     tipo_afectacion_de_igv  = Entidad.tipo_afectacion_de_igv;
+                    tipo_afectacion_de_igv_codNubefact = Entidad.tipo_afectacion_de_igv_codNubefact;
 
                     DvtD_OperCodigo = Entidad.DvtD_OperCodigo;
                     TxtItCantidad.Text = Convert.ToString(Entidad.cantidad);
@@ -1029,6 +1050,9 @@ namespace interfacedsk.facrturacion
                     Ent.numero = txtnumero.Text;
                     Ent.fechaEmision =Convert.ToDateTime(txtfechaemision.Text);
                     Ent.cliente_id = Convert.ToInt32(txtclienterucdni.Tag.ToString());
+                    Ent.cliente_dniRuc = txtclienterucdni.Text.Trim();
+                    Ent.cliente_desc = txtclienterucdnides.Text.Trim();
+
 
                     Ent.glosa = txtglosa.Text.Trim();
 
@@ -1047,8 +1071,18 @@ namespace interfacedsk.facrturacion
                         if (Log.Insertar(Ent))
                         {
                             //Despues de guardar se envia al servicio
+                            Respuesta rpta = new Respuesta();
+                            rpta =   Envia_Comprobante_Electronico_A_Servicio(Ent);
 
-                            Envia_Comprobante_Electronico_A_Servicio(Ent);
+                            //Actualizamos el campo aceptada_por_sunat capturado en la respuesta , se actualiza venta_cab por el id
+                            Ent_Facturacion EntRpta = new Ent_Facturacion();
+                            EntRpta.id = Ent.id;
+                            EntRpta.aceptado_por_sunat =Convert.ToBoolean(rpta.aceptada_por_sunat);
+
+                            Log.Actualizar_Campos_Sunat(EntRpta);
+
+
+
                             //
                             Accion.ExitoGuardar();
                             this.Close();
@@ -1073,71 +1107,181 @@ namespace interfacedsk.facrturacion
             }
         }
 
-        void Envia_Comprobante_Electronico_A_Servicio(Ent_Facturacion entidad)
+        Respuesta Envia_Comprobante_Electronico_A_Servicio(Ent_Facturacion entidad)
         {
-            Invoice param = new Invoice();
+            string ULServicioFacturacion = Actual_Conexion.urlServicio;//"https://localhost:44305/api/facturacion/nubefact"; //"
+
+            Invoice parametros = new Invoice();
+            parametros = Convertir_Cliente_Objet(entidad);
 
 
+            string json = JsonConvert.SerializeObject(parametros, Formatting.Indented);
+ 
+            byte[] bytes = Encoding.Default.GetBytes(json);
+            string json_en_utf_8 = Encoding.UTF8.GetString(bytes);
 
+            string json_de_respuesta = SendJson(ULServicioFacturacion, json_en_utf_8,"");
+
+            dynamic r = JsonConvert.DeserializeObject<Respuesta>(json_de_respuesta);
+            string r2 = JsonConvert.SerializeObject(r, Formatting.Indented);
+
+            dynamic leer_respuesta = JsonConvert.DeserializeObject<Respuesta>(json_de_respuesta);
+
+            Respuesta rpta = new Respuesta();
+
+            if (leer_respuesta.errors == null)
+            {
+
+                rpta.tipo = Convert.ToString(leer_respuesta.tipo);
+                rpta.serie = Convert.ToString(leer_respuesta.serie);
+                rpta.numero = Convert.ToString(leer_respuesta.numero);
+                rpta.url = Convert.ToString(leer_respuesta.url);
+                rpta.aceptada_por_sunat = Convert.ToString(leer_respuesta.aceptada_por_sunat);
+                rpta.sunat_description = Convert.ToString(leer_respuesta.sunat_description);
+                rpta.sunat_note = Convert.ToString(leer_respuesta.sunat_note);
+                rpta.sunat_responsecode = Convert.ToString(leer_respuesta.sunat_responsecode);
+                rpta.sunat_soap_error = Convert.ToString(leer_respuesta.sunat_soap_error);
+                rpta.pdf_zip_base64 = Convert.ToString(leer_respuesta.pdf_zip_base64);
+                rpta.xml_zip_base64 = Convert.ToString(leer_respuesta.xml_zip_base64);
+                rpta.cdr_zip_base64 = Convert.ToString(leer_respuesta.cdr_zip_base64);
+                rpta.cadena_para_codigo_qr = Convert.ToString(leer_respuesta.cadena_para_codigo_qr);
+                rpta.codigo_hash = Convert.ToString(leer_respuesta.codigo_hash);
+                rpta.codigo_de_barras = Convert.ToString(leer_respuesta.codigo_de_barras);
+
+
+            }
+            else
+            {
+                rpta.errors = Convert.ToString(leer_respuesta.errors);
+            }
+
+            return rpta;
 
         }
+
+
+
+
+
+
+
 
         Invoice Convertir_Cliente_Objet(Ent_Facturacion Documento_Cliente)
         {
             Invoice Doc = new Invoice();
-            Doc.operacion =  "" ;
-            Doc.tipo_de_comprobante = ""  ;
-            Doc.serie = Documento_Cliente.serie;
-            Doc.numero =Convert.ToInt32(Documento_Cliente.numero);
-            Doc.sunat_transaction =  "1" ; //1 = VENTA INTERNA 
-            Doc.cliente_tipo_de_documento =   ;
-            Doc.cliente_numero_de_documento =   ;
-            Doc.cliente_denominacion =   ;
-            Doc.cliente_direccion =   ;
-            Doc.cliente_email =   ;
-            Doc.cliente_email_1 =   ;
-            Doc.cliente_email_2 =   ;
-            Doc.fecha_de_emision =   ;
-            Doc.fecha_de_vencimiento =   ;
-            Doc.moneda =   ;
-            Doc.tipo_de_cambio =   ;
-            Doc.porcentaje_de_igv =   ;
-            Doc.descuento_global =   ;
-            Doc.total_descuento =   ;
-            Doc.total_anticipo =   ;
-            Doc.total_gravada =   ;
-            Doc.total_inafecta =   ;
-            Doc.total_exonerada =   ;
-            Doc.total_igv =   ;
-            Doc.total_gratuita =   ;
-            Doc.total_otros_cargos =   ;
-            Doc.total =   ;
-            Doc.percepcion_tipo =   ;
-            Doc.percepcion_base_imponible =   ;
-            Doc.total_percepcion =   ;
-            Doc.detraccion =   ;
-            Doc.observaciones =   ;
-            Doc.documento_que_se_modifica_tipo =   ;
-            Doc.documento_que_se_modifica_serie =   ;
-            Doc.documento_que_se_modifica_numero =   ;
-            Doc.tipo_de_nota_de_credito =   ;
-            Doc.tipo_de_nota_de_debito =   ;
-            Doc.enviar_automaticamente_a_la_sunat =   ;
-            Doc.enviar_automaticamente_al_cliente =   ;
-            Doc.codigo_unico =   ;
-            Doc.condiciones_de_pago =   ;
-            Doc.medio_de_pago =   ;
-            Doc.placa_vehiculo =   ;
-            Doc.orden_compra_servicio =   ;
-            Doc.tabla_personalizada_codigo =   ;
-            Doc.formato_de_pdf =   ;
 
-            //public List<Items> items 
+            Doc.URLNubeFact = Actual_Conexion.urlNubeFact;
+            Doc.TokenNubeFact = Actual_Conexion.tokenNubeFact;
+            Doc.operacion = "generar_comprobante";
+            Doc.tipo_de_comprobante = comprobante_codNubefact;
+            Doc.serie = Documento_Cliente.serie;
+            Doc.numero = Documento_Cliente.numero ;
+            Doc.sunat_transaction =  1 ; //1 = VENTA INTERNA 
+            Doc.cliente_tipo_de_documento = Convert.ToInt32(tipDoccodsunatCliente);
+            Doc.cliente_numero_de_documento = Documento_Cliente.cliente_dniRuc.Trim()  ;
+            Doc.cliente_denominacion =   Documento_Cliente.cliente_desc.Trim();
+            Doc.cliente_direccion =   "";
+            Doc.cliente_email =   "";
+            Doc.cliente_email_1 =  "" ;
+            Doc.cliente_email_2 =   "";
+            Doc.fecha_de_emision = Convert.ToString(Documento_Cliente.fechaEmision);
+            Doc.fecha_de_vencimiento =  "" ;
+            Doc.moneda =  moneda_codNubefact;
+            Doc.tipo_de_cambio = Convert.ToString(Documento_Cliente.tipo_cambio_monto);
+            Doc.porcentaje_de_igv = Convert.ToString(Documento_Cliente.DvtD_IGVTasaPorcentaje);
+            Doc.descuento_global = "";
+            Doc.total_descuento = "";
+            Doc.total_anticipo = "";
+            Doc.total_gravada = Convert.ToString(Documento_Cliente.total_gravada);
+            Doc.total_inafecta = Convert.ToString(Documento_Cliente.total_inafecta);
+            Doc.total_exonerada = Convert.ToString(Documento_Cliente.total_exonerada);
+            Doc.total_igv = Convert.ToString(Documento_Cliente.total_igv);
+            Doc.total_gratuita = Convert.ToString(Documento_Cliente.total_gratuita);
+            Doc.total_otros_cargos = Convert.ToString(Documento_Cliente.total_otros_cargos);
+            Doc.total = Convert.ToString(Documento_Cliente.total_cab);
+            Doc.percepcion_tipo = "";
+            Doc.percepcion_base_imponible = "";
+            Doc.total_percepcion = "";
+            Doc.detraccion = "false";
+            Doc.observaciones = "";
+            Doc.documento_que_se_modifica_tipo = "";
+            Doc.documento_que_se_modifica_serie = "";
+            Doc.documento_que_se_modifica_numero = "";
+            Doc.tipo_de_nota_de_credito = "";
+            Doc.tipo_de_nota_de_debito = "";
+            Doc.enviar_automaticamente_a_la_sunat = "true";
+            Doc.enviar_automaticamente_al_cliente = "false";
+            Doc.codigo_unico = "";
+            Doc.condiciones_de_pago = "";
+            Doc.medio_de_pago = "";
+            Doc.placa_vehiculo = "";
+            Doc.orden_compra_servicio = "";
+            Doc.tabla_personalizada_codigo = "";
+            Doc.formato_de_pdf = "";
+
+
+            List<Items> feDetalles = new List<Items>();
+
+            foreach (Ent_Facturacion bf in Documento_Cliente.DetalleADM)
+            {
+                Items det = new Items();
+
+                det.unidad_de_medida =bf.unidad_medida_fe;
+                det.codigo = bf.productocod;
+                det.descripcion =  bf.productodesc ;
+                det.cantidad = Convert.ToString(bf.cantidad);
+                det.valor_unitario = Convert.ToString(bf.valor_unitario);
+                det.precio_unitario = Convert.ToString(bf.precio_unitario); 
+                det.descuento = "";
+                det.subtotal = Convert.ToString(bf.subtotal);
+                det.tipo_de_igv = bf.tipo_afectacion_de_igv_codNubefact;
+                det.igv = Convert.ToString(bf.DvtD_IGVMonto);
+                det.total = Convert.ToString(bf.total_det);
+                det.anticipo_regularizacion = "false"; 
+                det.anticipo_comprobante_serie = "";
+                det.anticipo_comprobante_numero = "";
+ 
+                feDetalles.Add(det);
+            }
+
+            Doc.items = feDetalles;
+
+            return Doc;
 
 
         }
 
-            private void cbocomprobamte_SelectedIndexChanged(object sender, EventArgs e)
+        static string SendJson(string ruta, string json, string token)
+        {
+            try
+            {
+                ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(delegate { return true; });
+
+                using (var client = new WebClient())
+                {
+                    /// ESPECIFICAMOS EL TIPO DE DOCUMENTO EN EL ENCABEZADO
+                    client.Headers[HttpRequestHeader.ContentType] = "application/json; charset=utf-8";
+                    /// ASI COMO EL TOKEN UNICO
+                    //client.Headers[HttpRequestHeader.Authorization] = "Token token=" + token;
+                    /// OBTENEMOS LA RESPUESTA
+                    string respuesta = client.UploadString(ruta, "POST", json);
+                    /// Y LA 'RETORNAMOS'
+                    return respuesta;
+                }
+            }
+            catch (WebException ex)
+            {
+                /// EN CASO EXISTA ALGUN ERROR, LO TOMAMOS
+                var respuesta = new StreamReader(ex.Response.GetResponseStream()).ReadToEnd();
+                /// Y LO 'RETORNAMOS'
+                return respuesta;
+            }
+        }
+
+
+
+
+        private void cbocomprobamte_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
@@ -1153,6 +1297,7 @@ namespace interfacedsk.facrturacion
                     Lista = LogEmp.Listar(Ent);
 
                     comprobante_codSunat = Lista[0].codsunat;
+                    comprobante_codNubefact = Lista[0].comprobante_codNubefact;
                 }
 
             }

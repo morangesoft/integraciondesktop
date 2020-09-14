@@ -39,6 +39,8 @@ namespace interfacedsk
         public decimal total_cab { get; set; }
         public bool estado { get; set; }
         public string glosa { get; set; }
+        public bool aceptado_por_sunat { get; set; }
+        public int idVendedor { get; set; }
 
         //detalle
         public List<Ent_Facturacion> DetalleADM { get; set; }
@@ -59,6 +61,7 @@ namespace interfacedsk
         //public decimal subtotal { get; set; }
 
         public string tipo_afectacion_de_igv { get; set; }
+        public string tipo_afectacion_de_igv_codNubefact { get; set; }
         public string afecIgvDescripcion { get; set; }
         public string DvtD_OperCodigo { get; set; }
 

@@ -135,9 +135,37 @@ namespace interfacedsk
             }
         }
 
+        public void Actualizar_Campos_Sunat(Ent_Facturacion Clas_Enti)
+        {
+            MySqlTransaction Trs = null;
+            try
+            {
+                using (MySqlConnection Cn = new MySqlConnection(Dat_Conexion.ObtenerConnection()))
+                {
 
+                    string sql = "update venta_cab set aceptado_por_sunat = "+ Clas_Enti.aceptado_por_sunat + " where id = " + Clas_Enti.id;
 
-        public List<Ent_Facturacion> Listar(Ent_Facturacion Cls_Enti)
+                    using (MySqlCommand Cmd = new MySqlCommand(sql, Cn))
+                    {
+
+                        Cmd.CommandType = System.Data.CommandType.Text;
+       
+                        Cn.Open();
+                        Trs = Cn.BeginTransaction();
+                        Cmd.Transaction = Trs;
+                        Cmd.ExecuteNonQuery();
+  
+                        Trs.Commit();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+            public List<Ent_Facturacion> Listar(Ent_Facturacion Cls_Enti)
         {
             List<Ent_Facturacion> ListaItems = new List<Ent_Facturacion>();
             try
@@ -182,7 +210,8 @@ namespace interfacedsk
                                     total_otros_cargos = Dr.GetDecimal(23),
                                     total_cab = Dr.GetDecimal(24),
                                     estado=Dr.GetBoolean(25),
-                                    glosa = Dr.GetString(26)
+                                    glosa = Dr.GetString(26),
+                                    aceptado_por_sunat=Dr.GetBoolean(27)
                                 });
                             }
                         }
@@ -199,22 +228,7 @@ namespace interfacedsk
         }
 
 
-        //select det.id_venta_cab,
-        //det.id,
-        //det.tipo_prod_ser_id, tipr.descripcion,
-        //det.prod_serv_id,
-        //case when det.tipo_prod_ser_id = 1 then prod.nombreProducto else serv.nombreServicio end as nombreProdServ,
-        //det.unidad_medida_id, unm.descripcion, unm.codfe,
-        //det.cantidad,
-        //det.valor_unitario,
-        //det.precio_unitario,
-        //det.subtotal,
-        //det.tipo_de_igv, tipaf.afecIgvDescripcion, tipaf.afecIgvTabla,
-        //det.igv, det.total
-        //from venta_det det
-
-
-
+     
         public List<Ent_Facturacion> Listar_Det(Ent_Facturacion Cls_Enti)
         {
             List<Ent_Facturacion> ListaItems = new List<Ent_Facturacion>();

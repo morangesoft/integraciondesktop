@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,8 +11,12 @@ namespace interfacedsk.nube_fact
     {
 
         //[JsonProperty(PropertyName = "operacion")]
-        public string operacion { get; set; }
+        public string URLNubeFact { get; set; }
+        public string TokenNubeFact { get; set; }
 
+
+
+        public string operacion { get; set; }
 
         //[JsonProperty(PropertyName = "tipo_de_comprobante")]
         public string tipo_de_comprobante { get; set; }

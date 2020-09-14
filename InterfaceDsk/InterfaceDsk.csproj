@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Data.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Printing.v19.2.Core, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Utils.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -152,7 +155,25 @@
     <Compile Include="Proveedor\frm_proveedor_edicion.Designer.cs">
       <DependentUpon>frm_proveedor_edicion.cs</DependentUpon>
     </Compile>
-    <Compile Include="facturacion electronica\NubeFact-json.cs" />
+    <Compile Include="facturacion electronica ejemplo\EjmploNubeFact-json.cs" />
+    <Compile Include="reportes\frm_reporte_ventas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="reportes\frm_reporte_ventas.Designer.cs">
+      <DependentUpon>frm_reporte_ventas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="reportes\Rpt_Reporte_Ventas.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Rpt_Reporte_Ventas.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="reportes\Rpt_Reporte_Ventas_Cab.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Rpt_Reporte_Ventas_Cab.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="servicios\frm_servicios.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -236,6 +257,17 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Proveedor\frm_proveedor_edicion.resx">
       <DependentUpon>frm_proveedor_edicion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="reportes\frm_reporte_ventas.resx">
+      <DependentUpon>frm_reporte_ventas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="reportes\Rpt_Reporte_Ventas.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt_Reporte_Ventas.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="reportes\Rpt_Reporte_Ventas_Cab.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt_Reporte_Ventas_Cab.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="servicios\frm_servicios.resx">
       <DependentUpon>frm_servicios.cs</DependentUpon>
@@ -330,6 +362,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\btnDetQuitar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exportar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

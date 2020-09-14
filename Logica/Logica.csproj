@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Log_Comprobante.cs" />
+    <Compile Include="Log_Datos_Generales.cs" />
     <Compile Include="Log_Documento.cs" />
     <Compile Include="Log_Facturacion.cs" />
     <Compile Include="Log_Inicio_sesion.cs" />
@@ -51,6 +52,7 @@
     <Compile Include="Log_Perfil.cs" />
     <Compile Include="Log_Producto.cs" />
     <Compile Include="Log_Proveedor.cs" />
+    <Compile Include="Log_Reporte.cs" />
     <Compile Include="Log_Servicio.cs" />
     <Compile Include="Log_tipo_afectacion_igv.cs" />
     <Compile Include="Log_Tipo_Producto.cs" />

@@ -37,7 +37,19 @@ namespace interfacedsk
                 throw new Exception(ex.Message);
             }
         }
+        public bool Actualizar_Campos_Sunat(Ent_Facturacion Cls_Enti)
+        {
+            try
+            {
 
+                CapaDato.Actualizar_Campos_Sunat(Cls_Enti);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         public List<Ent_Facturacion> Listar(Ent_Facturacion Cls_Enti)
         {
             try

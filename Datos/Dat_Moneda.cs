@@ -16,7 +16,18 @@ namespace interfacedsk
             {
                 using (MySqlConnection Cn = new MySqlConnection(Dat_Conexion.ObtenerConnection()))
                 {
-                    string sqlCadena = "select * from moneda";
+   
+                    string sqlCadena = "";
+                    if (Cls_Enti.id != 0)
+                    {
+                        sqlCadena = "select * from moneda where id=" + Cls_Enti.id;
+
+                    }
+                    else
+                    {
+                        sqlCadena = "select * from moneda";
+                    }
+
 
                     using (MySqlCommand Cmd = new MySqlCommand(sqlCadena, Cn) { CommandType = System.Data.CommandType.Text })
                     {
@@ -30,7 +41,8 @@ namespace interfacedsk
                                 {
                                     id = Dr.GetInt32(0),
                                     descripcion = Dr.GetString(1),
-                                    codsunat = Dr.GetString(2)
+                                    codsunat = Dr.GetString(2),
+                                    moneda_codNubefact=Dr.GetString(3)
                                 });
                             }
                         }
