@@ -965,6 +965,7 @@ CREATE TABLE `venta_cab` (
   `total` float DEFAULT NULL,
   `estado` int DEFAULT NULL,
   `aceptado_por_sunat` bit(1) DEFAULT NULL,
+  `vendedor_id` int DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -975,7 +976,7 @@ CREATE TABLE `venta_cab` (
 
 LOCK TABLES `venta_cab` WRITE;
 /*!40000 ALTER TABLE `venta_cab` DISABLE KEYS */;
-INSERT INTO `venta_cab` VALUES (11,1,'0000','00000001','2020-09-10 00:00:00',85,NULL,1,1,NULL,8.47,0,90,1.53,0,0,100,1,NULL),(12,1,'0001','00000001','2020-09-10 00:00:00',85,NULL,1,1,NULL,0,0,225,0,0,0,225,1,NULL),(13,1,'0001','00000001','2020-09-10 00:00:00',85,NULL,1,1,NULL,0,0,45,0,0,0,45,1,NULL),(14,1,'0002','00000002','2020-09-10 00:00:00',85,'',1,1,NULL,10.17,0,0,1.83,0,0,0,1,NULL),(15,1,'0004','00000005','2020-09-10 00:00:00',85,'OOOOOOOOOOOOOOOOOOO',1,1,NULL,80.51,0,0,14.49,0,0,95,1,NULL),(16,2,'B001','00000001','2020-09-11 00:00:00',85,'ppp',1,1,NULL,8.47,0,0,1.53,0,0,10,1,NULL),(17,2,'B001','00000001','2020-09-11 00:00:00',85,'ooooooo',1,1,NULL,12.71,0,0,2.29,0,0,15,1,NULL),(18,2,'B001','00000001','2020-09-11 00:00:00',85,'pp',1,1,NULL,12.71,0,0,2.29,0,0,15,1,NULL),(19,2,'B001','00000006','2020-09-11 00:00:00',85,'PP',1,1,NULL,8.47,0,0,1.53,0,0,10,1,NULL),(20,2,'B001','00000007','2020-09-11 00:00:00',85,'PPP',1,1,NULL,8.47,0,0,1.53,0,0,10,1,NULL),(21,2,'B001','00000010','2020-09-11 00:00:00',86,'PPPP',1,1,NULL,16.95,0,0,3.05,0,0,20,1,NULL),(22,2,'B001','00000011','2020-09-11 00:00:00',86,'ppp',1,1,NULL,8.47,0,0,1.53,0,0,10,1,NULL),(23,2,'B001','00000012','2020-09-11 00:00:00',86,'oooo',1,1,NULL,8.47,0,0,1.53,0,0,10,1,NULL),(24,2,'B001','00000001','2020-09-11 00:00:00',86,'ooo',1,1,NULL,8.47,0,0,1.53,0,0,10,1,NULL),(25,2,'B001','00000014','2020-09-11 00:00:00',86,'ooo',1,1,NULL,101.69,0,0,18.31,0,0,120,1,NULL),(26,2,'B001','00000016','2020-09-11 00:00:00',86,'PPPPPPPPP',1,1,NULL,8.47,0,0,1.53,0,0,10,1,NULL),(27,2,'B001','00000017','2020-09-11 00:00:00',86,'OOOO',1,1,NULL,50.85,0,0,9.15,0,0,60,1,NULL),(28,2,'B001','00000018','2020-09-11 00:00:00',86,'OOOOOOOOOOOOOOOOOO',1,1,NULL,101.69,0,0,18.31,0,0,120,1,NULL),(29,2,'BBB1','00000020','2020-09-11 00:00:00',86,'LLLLLLLLLLLL',1,1,NULL,8.47,0,0,1.53,0,0,10,1,NULL),(30,2,'BBB1','00000022','2020-09-11 00:00:00',86,'ccccccccccc',1,1,NULL,8.47,0,0,1.53,0,0,10,1,_binary '\0'),(31,2,'BBB1','00000001','2020-09-14 00:00:00',86,'ppppppppp',1,1,NULL,0,0,90,0,0,0,90,1,NULL),(32,2,'BBB1','00000020','2020-09-14 00:00:00',86,'KKK',1,1,NULL,0,0,45,0,0,0,45,1,_binary '\0'),(33,2,'BBB1','00000030','2020-09-14 00:00:00',86,'ssssssssssssss',1,1,NULL,0,0,45,0,0,0,45,1,_binary '\0'),(34,2,'BBB1','00000026','2020-09-14 00:00:00',86,'vvvvvvvvvvv',1,1,NULL,0,0,90,0,0,0,90,1,_binary '\0'),(35,2,'BBB1','00000027','2020-09-14 00:00:00',86,'JJJJJJJJJ',1,1,NULL,0,0,90,0,0,0,90,1,NULL),(36,2,'BBB1','00000028','2020-09-14 00:00:00',86,'KKKKKKKK',1,1,NULL,0,0,45,0,0,0,45,1,NULL),(37,2,'BBB1','00000029','2020-09-14 00:00:00',86,'MMMMMMMM',1,1,NULL,12.71,0,0,2.29,0,0,15,1,NULL),(38,2,'BBB1','00000029','2020-09-14 00:00:00',86,'OOO',1,1,NULL,12.71,0,0,2.29,0,0,15,1,_binary '\0'),(39,2,'BBB1','00000033','2020-09-14 00:00:00',86,'HHHHHHHHHHHH',1,1,NULL,38.14,0,0,6.86,0,0,45,1,NULL),(40,2,'BBB1','00000034','2020-09-14 00:00:00',85,'MMMMMMMMM',1,1,NULL,38.14,0,0,6.86,0,0,45,1,_binary '\0'),(41,2,'BBB1','00000036','2020-09-14 00:00:00',86,'KKKKKKk',1,1,NULL,8.47,0,0,1.53,0,0,10,1,_binary '\0'),(42,2,'BBB1','00000045','2020-09-14 00:00:00',86,'MMMMMMM',1,1,NULL,12.71,0,0,2.29,0,0,15,1,NULL),(43,2,'BBB1','00000047','2020-09-14 00:00:00',86,'HHHHHHHH',1,1,NULL,25.42,0,0,4.58,0,0,30,1,NULL),(44,2,'BBB1','00000049','2020-09-14 00:00:00',86,'MMMMMM',1,1,NULL,38.14,0,0,6.86,0,0,45,1,_binary '\0'),(45,2,'BBB1','00000050','2020-09-14 00:00:00',86,'JJJJJJJJ',1,1,NULL,12.71,0,0,2.29,0,0,15,1,_binary '\0'),(46,2,'BBB1','00000051','2020-09-14 00:00:00',86,'HHH',1,1,NULL,21.18,0,0,3.82,0,0,25,1,_binary '\0');
+INSERT INTO `venta_cab` VALUES (11,1,'0000','00000001','2020-09-10 00:00:00',85,NULL,1,1,NULL,8.47,0,90,1.53,0,0,100,1,NULL,NULL),(12,1,'0001','00000001','2020-09-10 00:00:00',85,NULL,1,1,NULL,0,0,225,0,0,0,225,1,NULL,NULL),(13,1,'0001','00000001','2020-09-10 00:00:00',85,NULL,1,1,NULL,0,0,45,0,0,0,45,1,NULL,NULL),(14,1,'0002','00000002','2020-09-10 00:00:00',85,'',1,1,NULL,10.17,0,0,1.83,0,0,0,1,NULL,NULL),(15,1,'0004','00000005','2020-09-10 00:00:00',85,'OOOOOOOOOOOOOOOOOOO',1,1,NULL,80.51,0,0,14.49,0,0,95,1,NULL,NULL),(16,2,'B001','00000001','2020-09-11 00:00:00',85,'ppp',1,1,NULL,8.47,0,0,1.53,0,0,10,1,NULL,NULL),(17,2,'B001','00000001','2020-09-11 00:00:00',85,'ooooooo',1,1,NULL,12.71,0,0,2.29,0,0,15,1,NULL,NULL),(18,2,'B001','00000001','2020-09-11 00:00:00',85,'pp',1,1,NULL,12.71,0,0,2.29,0,0,15,1,NULL,NULL),(19,2,'B001','00000006','2020-09-11 00:00:00',85,'PP',1,1,NULL,8.47,0,0,1.53,0,0,10,1,NULL,NULL),(20,2,'B001','00000007','2020-09-11 00:00:00',85,'PPP',1,1,NULL,8.47,0,0,1.53,0,0,10,1,NULL,NULL),(21,2,'B001','00000010','2020-09-11 00:00:00',86,'PPPP',1,1,NULL,16.95,0,0,3.05,0,0,20,1,NULL,NULL),(22,2,'B001','00000011','2020-09-11 00:00:00',86,'ppp',1,1,NULL,8.47,0,0,1.53,0,0,10,1,NULL,NULL),(23,2,'B001','00000012','2020-09-11 00:00:00',86,'oooo',1,1,NULL,8.47,0,0,1.53,0,0,10,1,NULL,NULL),(24,2,'B001','00000001','2020-09-11 00:00:00',86,'ooo',1,1,NULL,8.47,0,0,1.53,0,0,10,1,NULL,NULL),(25,2,'B001','00000014','2020-09-11 00:00:00',86,'ooo',1,1,NULL,101.69,0,0,18.31,0,0,120,1,NULL,NULL),(26,2,'B001','00000016','2020-09-11 00:00:00',86,'PPPPPPPPP',1,1,NULL,8.47,0,0,1.53,0,0,10,1,NULL,NULL),(27,2,'B001','00000017','2020-09-11 00:00:00',86,'OOOO',1,1,NULL,50.85,0,0,9.15,0,0,60,1,NULL,NULL),(28,2,'B001','00000018','2020-09-11 00:00:00',86,'OOOOOOOOOOOOOOOOOO',1,1,NULL,101.69,0,0,18.31,0,0,120,1,NULL,NULL),(29,2,'BBB1','00000020','2020-09-11 00:00:00',86,'LLLLLLLLLLLL',1,1,NULL,8.47,0,0,1.53,0,0,10,1,NULL,NULL),(30,2,'BBB1','00000022','2020-09-11 00:00:00',86,'ccccccccccc',1,1,NULL,8.47,0,0,1.53,0,0,10,1,_binary '\0',NULL),(31,2,'BBB1','00000001','2020-09-14 00:00:00',86,'ppppppppp',1,1,NULL,0,0,90,0,0,0,90,1,NULL,NULL),(32,2,'BBB1','00000020','2020-09-14 00:00:00',86,'KKK',1,1,NULL,0,0,45,0,0,0,45,1,_binary '\0',NULL),(33,2,'BBB1','00000030','2020-09-14 00:00:00',86,'ssssssssssssss',1,1,NULL,0,0,45,0,0,0,45,1,_binary '\0',NULL),(34,2,'BBB1','00000026','2020-09-14 00:00:00',86,'vvvvvvvvvvv',1,1,NULL,0,0,90,0,0,0,90,1,_binary '\0',NULL),(35,2,'BBB1','00000027','2020-09-14 00:00:00',86,'JJJJJJJJJ',1,1,NULL,0,0,90,0,0,0,90,1,NULL,NULL),(36,2,'BBB1','00000028','2020-09-14 00:00:00',86,'KKKKKKKK',1,1,NULL,0,0,45,0,0,0,45,1,NULL,NULL),(37,2,'BBB1','00000029','2020-09-14 00:00:00',86,'MMMMMMMM',1,1,NULL,12.71,0,0,2.29,0,0,15,1,NULL,NULL),(38,2,'BBB1','00000029','2020-09-14 00:00:00',86,'OOO',1,1,NULL,12.71,0,0,2.29,0,0,15,1,_binary '\0',NULL),(39,2,'BBB1','00000033','2020-09-14 00:00:00',86,'HHHHHHHHHHHH',1,1,NULL,38.14,0,0,6.86,0,0,45,1,NULL,NULL),(40,2,'BBB1','00000034','2020-09-14 00:00:00',85,'MMMMMMMMM',1,1,NULL,38.14,0,0,6.86,0,0,45,1,_binary '\0',NULL),(41,2,'BBB1','00000036','2020-09-14 00:00:00',86,'KKKKKKk',1,1,NULL,8.47,0,0,1.53,0,0,10,1,_binary '\0',NULL),(42,2,'BBB1','00000045','2020-09-14 00:00:00',86,'MMMMMMM',1,1,NULL,12.71,0,0,2.29,0,0,15,1,NULL,NULL),(43,2,'BBB1','00000047','2020-09-14 00:00:00',86,'HHHHHHHH',1,1,NULL,25.42,0,0,4.58,0,0,30,1,NULL,NULL),(44,2,'BBB1','00000049','2020-09-14 00:00:00',86,'MMMMMM',1,1,NULL,38.14,0,0,6.86,0,0,45,1,_binary '\0',NULL),(45,2,'BBB1','00000050','2020-09-14 00:00:00',86,'JJJJJJJJ',1,1,NULL,12.71,0,0,2.29,0,0,15,1,_binary '\0',NULL),(46,2,'BBB1','00000051','2020-09-14 00:00:00',86,'HHH',1,1,NULL,21.18,0,0,3.82,0,0,25,1,_binary '\0',NULL);
 /*!40000 ALTER TABLE `venta_cab` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1751,11 +1752,12 @@ in total_igv float,
 in total_gratuita float,
 in total_otros_cargos float,
 in total  float,
-in glosa varchar(300)
+in glosa varchar(300),
+in vendedor_id int
 )
 BEGIN
-	insert into venta_cab (comprobante_id,serie,numero,fechaEmision,cliente_id,modena_id,tipo_cambio_monto,total_gravada,total_inafecta,total_exonerada,total_igv,total_gratuita,total_otros_cargos,total,estado,glosa)
-	values(comprobante_id,serie,numero,fechaEmision,cliente_id,modena_id,tipo_cambio_monto,total_gravada,total_inafecta,total_exonerada,total_igv,total_gratuita,total_otros_cargos,total,1,glosa);
+	insert into venta_cab (comprobante_id,serie,numero,fechaEmision,cliente_id,modena_id,tipo_cambio_monto,total_gravada,total_inafecta,total_exonerada,total_igv,total_gratuita,total_otros_cargos,total,estado,glosa,vendedor_id)
+	values(comprobante_id,serie,numero,fechaEmision,cliente_id,modena_id,tipo_cambio_monto,total_gravada,total_inafecta,total_exonerada,total_igv,total_gratuita,total_otros_cargos,total,1,glosa,vendedor_id);
 	set _id = last_insert_id();
 END ;;
 DELIMITER ;
@@ -1799,7 +1801,8 @@ select
 	ifnull(cab.total,0) total,
 	cab.estado,
     ifnull(cab.glosa,'') as glosa,
-    ifnull(cab.aceptado_por_sunat,0) as aceptado_por_sunat
+    ifnull(cab.aceptado_por_sunat,0) as aceptado_por_sunat,
+    ifnull(cab.vendedor_id,0) as vendedor_id
 from venta_cab cab
 inner join comprobante com on com.id=cab.comprobante_id
 inner join usuario usu on usu.usuario_id= cab.cliente_id
@@ -1870,7 +1873,8 @@ in total_igv float,
 in total_gratuita float,
 in total_otros_cargos float,
 in total  float,
-in glosa varchar(300)
+in glosa varchar(300),
+in vendedor_id int
 )
 BEGIN
 	update venta_cab 
@@ -1888,7 +1892,8 @@ BEGIN
      total_gratuita = total_gratuita,
      total_otros_cargos = total_otros_cargos,
      total = total,
-     glosa=glosa
+     glosa=glosa,
+     vendedor_id=vendedor_id
      where id=_id ;
    
 	delete from venta_det where id_venta_cab = _id;
@@ -1973,6 +1978,160 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_VentaReporte` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE   PROCEDURE `sp_VentaReporte`(
+in _desde datetime  ,
+in _hasta datetime,
+in _cliente int
+)
+BEGIN
+ 
+ 
+		 select  
+			cab.id,
+			cab.comprobante_id,
+            com.descripcion comprobante_desc,
+            com.codsunat comprobante_sunat,
+			cab.serie,
+			cab.numero,
+			cab.fechaEmision,
+			cab.cliente_id,
+            concat(usu.usuario_nombre ," " , usu.usuario_apellido) as cliente,
+            usu.usuario_dni,
+			doc.id doc_id,
+            doc.descripcion documento_desc,
+            doc.codsunat documento_sunat,
+			cab.modena_id,
+            mon.descripcion moneda_desc,
+            mon.codsunat moneda_sunat,
+			cab.tipo_cambio_monto,
+			ifnull(cab.igv_tasa_porcentaje,0) igv_tasa_porcentaje,
+			ifnull(cab.total_gravada,0) total_gravada,
+			ifnull(cab.total_inafecta,0) total_inafecta,
+			ifnull(cab.total_exonerada,0) total_exonerada,
+			ifnull(cab.total_igv,0) total_igv,
+			ifnull(cab.total_gratuita,0) total_gratuita,
+			ifnull(cab.total_otros_cargos,0) total_otros_cargos,
+			ifnull(cab.total,0) total,
+			cab.estado,
+			ifnull(cab.glosa,'') as glosa,
+			ifnull(cab.aceptado_por_sunat,0) as aceptado_por_sunat,
+			ifnull(cab.vendedor_id,0) as vendedor_id
+      
+		from venta_cab cab
+		inner join comprobante com on com.id=cab.comprobante_id
+		inner join usuario usu on usu.usuario_id= cab.cliente_id
+		inner join documento doc on doc.id =usu.tipo_doc_id
+		inner join moneda mon on mon.id=cab.modena_id
+		where    (cab.fechaEmision between  _desde and _hasta) and 
+				(_cliente = 0 or cab.cliente_id = _cliente)  
+			;
+ 
+
+  
+
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_VentaReportePivotDetallado` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE   PROCEDURE `sp_VentaReportePivotDetallado`(
+in _desde datetime  ,
+in _hasta datetime,
+in _cliente int
+)
+BEGIN
+ 
+ 
+		 select  
+			cab.id,
+			cab.comprobante_id,
+            com.descripcion comprobante_desc,
+            com.codsunat comprobante_sunat,
+			cab.serie,
+			cab.numero,
+			cab.fechaEmision,
+			cab.cliente_id,
+            concat(usu.usuario_nombre ," " , usu.usuario_apellido) as cliente,
+            usu.usuario_dni,
+			doc.id doc_id,
+            doc.descripcion documento_desc,
+            doc.codsunat documento_sunat,
+			cab.modena_id,
+            mon.descripcion moneda_desc,
+            mon.codsunat moneda_sunat,
+			cab.tipo_cambio_monto,
+			ifnull(cab.igv_tasa_porcentaje,0) igv_tasa_porcentaje,
+			ifnull(cab.total_gravada,0) total_gravada,
+			ifnull(cab.total_inafecta,0) total_inafecta,
+			ifnull(cab.total_exonerada,0) total_exonerada,
+			ifnull(cab.total_igv,0) total_igv,
+			ifnull(cab.total_gratuita,0) total_gratuita,
+			ifnull(cab.total_otros_cargos,0) total_otros_cargos,
+			ifnull(cab.total,0) total,
+			cab.estado,
+			ifnull(cab.glosa,'') as glosa,
+			ifnull(cab.aceptado_por_sunat,0) as aceptado_por_sunat,
+			ifnull(cab.vendedor_id,0) as vendedor_id,
+      		det.id,
+			det.tipo_prod_ser_id,tipr.descripcion,
+			det.prod_serv_id,
+			case when det.tipo_prod_ser_id =1 then prod.codigoProducto  else serv.codigoServicio  end as codProdServ,
+			case when det.tipo_prod_ser_id =1 then prod.nombreProducto else serv.nombreServicio end as nombreProdServ,
+			det.unidad_medida_id,unm.descripcion,unm.codfe,
+			det.cantidad,
+			det.valor_unitario,
+			det.precio_unitario,
+			det.subtotal,
+			-- det.tipo_de_igv,tipaf.afecIgvDescripcion,tipaf.afecIgvTabla,
+			det.igv,det.total 
+        
+		from venta_cab cab
+		inner join comprobante com on com.id=cab.comprobante_id
+		inner join usuario usu on usu.usuario_id= cab.cliente_id
+		inner join documento doc on doc.id =usu.tipo_doc_id
+		inner join moneda mon on mon.id=cab.modena_id
+        --
+        inner join venta_det det on det.id_venta_cab = cab.id
+        inner join tipo_producto tipr on tipr.id=det.tipo_prod_ser_id
+		inner join productos prod on prod.idProducto =det.prod_serv_id
+		inner join servicios serv on serv.idServicio=det.prod_serv_id
+		inner join unidad_medida unm on unm.id=det.unidad_medida_id
+		inner join tipo_afectacion_igv tipaf on tipaf.afecIgvCodigo =det.tipo_de_igv
+
+		where    (cab.fechaEmision between  _desde and _hasta) and 
+				(_cliente = 0 or cab.cliente_id = _cliente)  
+			;
+ 
+
+  
+
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -1983,4 +2142,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-09-14 12:38:38
+-- Dump completed on 2020-09-16  9:45:41

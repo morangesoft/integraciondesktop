@@ -133,5 +133,21 @@ namespace interfacedsk
                 f.Activate();
             }
         }
+
+        private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MdiNoDuplicate("frm_reporte_ventas_detallado") == false)
+            {
+                Form f = new frm_reporte_ventas_detallado();
+                f.MdiParent = this;
+                f.Show();
+                f.Activate();
+            }
+        }
+
+        private void toolStripDropDownButton1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

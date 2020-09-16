@@ -73,7 +73,7 @@ namespace interfacedsk
  
         public decimal total_det { get; set; }
 
-
+        public decimal igv_det { get; set; }
 
     }
 }

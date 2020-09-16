@@ -33,19 +33,27 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AxShockwaveFlashObjects, Version=1.0.0.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Data.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.PivotGrid.v19.2.Core, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Printing.v19.2.Core, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Utils.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraEditors.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraGrid.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraPivotGrid.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraPrinting.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DHSoftControls, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\DHSoftControls.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=8.0.21.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Logica\bin\Debug\MySql.Data.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -53,6 +61,8 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -156,23 +166,36 @@
       <DependentUpon>frm_proveedor_edicion.cs</DependentUpon>
     </Compile>
     <Compile Include="facturacion electronica ejemplo\EjmploNubeFact-json.cs" />
-    <Compile Include="reportes\frm_reporte_ventas.cs">
+    <Compile Include="reportes\DS\Venta_Cab.cs">
+      <DependentUpon>Venta_Cab.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="reportes\frm_reporte_ventas_detallado.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="reportes\frm_reporte_ventas.Designer.cs">
+    <Compile Include="reportes\frm_reporte_ventas_detallado.Designer.cs">
+      <DependentUpon>frm_reporte_ventas_detallado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="reportes\frm_rpte_viwer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="reportes\frm_rpte_viwer.Designer.cs">
+      <DependentUpon>frm_rpte_viwer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="reportes\Rpte_Ventas_Cab.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Rpte_Ventas_Cab.rpt</DependentUpon>
+    </Compile>
+    <Compile Include="reportes\DS\Venta_Cab.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Venta_Cab.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="reportes\DS\frm_reporte_ventas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="reportes\DS\frm_reporte_ventas.Designer.cs">
       <DependentUpon>frm_reporte_ventas.cs</DependentUpon>
-    </Compile>
-    <Compile Include="reportes\Rpt_Reporte_Ventas.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Rpt_Reporte_Ventas.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="reportes\Rpt_Reporte_Ventas_Cab.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Rpt_Reporte_Ventas_Cab.rpt</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="servicios\frm_servicios.cs">
       <SubType>Form</SubType>
@@ -258,16 +281,18 @@
     <EmbeddedResource Include="Proveedor\frm_proveedor_edicion.resx">
       <DependentUpon>frm_proveedor_edicion.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="reportes\frm_reporte_ventas.resx">
+    <EmbeddedResource Include="reportes\frm_reporte_ventas_detallado.resx">
+      <DependentUpon>frm_reporte_ventas_detallado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="reportes\frm_rpte_viwer.resx">
+      <DependentUpon>frm_rpte_viwer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="reportes\Rpte_Ventas_Cab.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpte_Ventas_Cab.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="reportes\DS\frm_reporte_ventas.resx">
       <DependentUpon>frm_reporte_ventas.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="reportes\Rpt_Reporte_Ventas.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>Rpt_Reporte_Ventas.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="reportes\Rpt_Reporte_Ventas_Cab.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>Rpt_Reporte_Ventas_Cab.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="servicios\frm_servicios.resx">
       <DependentUpon>frm_servicios.cs</DependentUpon>
@@ -312,6 +337,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Datos\Datos.csproj">
+      <Project>{716460f0-ab35-4dec-aede-5e087553ab15}</Project>
+      <Name>Datos</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Entidad\Entidad.csproj">
       <Project>{13a24dcb-b150-431c-b538-67480e2e0f7f}</Project>
       <Name>Entidad</Name>
@@ -322,6 +351,17 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="reportes\DS\Venta_Cab.xsc">
+      <DependentUpon>Venta_Cab.xsd</DependentUpon>
+    </None>
+    <None Include="reportes\DS\Venta_Cab.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Venta_Cab.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="reportes\DS\Venta_Cab.xss">
+      <DependentUpon>Venta_Cab.xsd</DependentUpon>
+    </None>
     <None Include="Resources\usuarios.png" />
   </ItemGroup>
   <ItemGroup>
@@ -368,6 +408,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\verdetalles.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\facturacion.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

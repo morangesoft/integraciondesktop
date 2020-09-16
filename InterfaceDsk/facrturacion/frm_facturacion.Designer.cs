@@ -60,7 +60,7 @@
             this.btnmodificar});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1074, 39);
+            this.toolStrip1.Size = new System.Drawing.Size(1133, 39);
             this.toolStrip1.TabIndex = 2;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -90,7 +90,7 @@
             this.dgvdatos.Location = new System.Drawing.Point(0, 39);
             this.dgvdatos.MainView = this.gridView1;
             this.dgvdatos.Name = "dgvdatos";
-            this.dgvdatos.Size = new System.Drawing.Size(1074, 465);
+            this.dgvdatos.Size = new System.Drawing.Size(1133, 518);
             this.dgvdatos.TabIndex = 3;
             this.dgvdatos.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -304,7 +304,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1074, 504);
+            this.ClientSize = new System.Drawing.Size(1133, 557);
             this.Controls.Add(this.dgvdatos);
             this.Controls.Add(this.toolStrip1);
             this.Name = "frm_facturacion";

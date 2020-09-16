@@ -36,7 +36,6 @@
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.btnproveedor = new System.Windows.Forms.ToolStripButton();
             this.btnfacturacion = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.ventasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,11 +51,10 @@
             this.toolStripButton2,
             this.btnproveedor,
             this.btnfacturacion,
-            this.toolStripDropDownButton1,
-            this.toolStripButton4});
+            this.toolStripDropDownButton1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(966, 39);
+            this.toolStrip1.Size = new System.Drawing.Size(1133, 39);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -110,22 +108,13 @@
             // 
             // btnfacturacion
             // 
-            this.btnfacturacion.Image = ((System.Drawing.Image)(resources.GetObject("btnfacturacion.Image")));
+            this.btnfacturacion.Image = global::interfacedsk.Properties.Resources.facturacion;
+            this.btnfacturacion.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnfacturacion.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnfacturacion.Name = "btnfacturacion";
-            this.btnfacturacion.Size = new System.Drawing.Size(89, 36);
+            this.btnfacturacion.Size = new System.Drawing.Size(105, 36);
             this.btnfacturacion.Text = "Facturación";
             this.btnfacturacion.Click += new System.EventHandler(this.btnfacturacion_Click);
-            // 
-            // toolStripButton4
-            // 
-            this.toolStripButton4.Image = global::interfacedsk.Properties.Resources.calificacion;
-            this.toolStripButton4.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.Size = new System.Drawing.Size(105, 36);
-            this.toolStripButton4.Text = "Calificacion";
-            this.toolStripButton4.Visible = false;
             // 
             // toolStripDropDownButton1
             // 
@@ -138,25 +127,27 @@
             this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
             this.toolStripDropDownButton1.Size = new System.Drawing.Size(98, 36);
             this.toolStripDropDownButton1.Text = "Reportes";
+            this.toolStripDropDownButton1.Click += new System.EventHandler(this.toolStripDropDownButton1_Click);
             // 
             // ventasToolStripMenuItem
             // 
             this.ventasToolStripMenuItem.Name = "ventasToolStripMenuItem";
-            this.ventasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.ventasToolStripMenuItem.Text = "Ventas";
+            this.ventasToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.ventasToolStripMenuItem.Text = "Ventas resumen";
             this.ventasToolStripMenuItem.Click += new System.EventHandler(this.ventasToolStripMenuItem_Click);
             // 
             // usuariosToolStripMenuItem
             // 
             this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
-            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.usuariosToolStripMenuItem.Text = "Usuarios";
+            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.usuariosToolStripMenuItem.Text = "Ventas detallada";
+            this.usuariosToolStripMenuItem.Click += new System.EventHandler(this.usuariosToolStripMenuItem_Click);
             // 
             // frm_principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(966, 549);
+            this.ClientSize = new System.Drawing.Size(1133, 557);
             this.Controls.Add(this.toolStrip1);
             this.IsMdiContainer = true;
             this.Name = "frm_principal";
@@ -182,7 +173,6 @@
         private System.Windows.Forms.ToolStripMenuItem ventasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem usuariosToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton btnproveedor;
-        private System.Windows.Forms.ToolStripButton toolStripButton4;
         private System.Windows.Forms.ToolStripButton btnfacturacion;
     }
 }
