@@ -768,7 +768,7 @@ namespace interfacedsk.facrturacion
             }
             catch(Exception ex)
             {
-
+                Accion.ErrorSistema(ex.Message);
             }
 
         }

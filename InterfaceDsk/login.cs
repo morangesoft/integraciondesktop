@@ -112,7 +112,7 @@ namespace interfacedsk
             }
             catch (Exception ex)
             {
-                //Accion.ErrorSistema(ex.Message);
+               Accion.ErrorSistema(ex.Message);
             }
 
         }

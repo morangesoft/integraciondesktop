@@ -51,7 +51,7 @@ namespace interfacedsk.productos
             }
             catch (Exception ex)
             {
-
+                Accion.ErrorSistema(ex.Message);
             }
         }
 
@@ -74,7 +74,7 @@ namespace interfacedsk.productos
             }
             catch (Exception ex)
             {
-
+                Accion.ErrorSistema(ex.Message);
             }
         }
 

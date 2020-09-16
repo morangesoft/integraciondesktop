@@ -53,7 +53,7 @@ namespace interfacedsk.usuarios
             }
             catch (Exception ex)
             {
-               
+                Accion.ErrorSistema(ex.Message);
             }
         }
 
@@ -75,7 +75,7 @@ namespace interfacedsk.usuarios
             }
             catch (Exception ex)
             {
-        
+                Accion.ErrorSistema(ex.Message);
             }
         }
 

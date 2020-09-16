@@ -57,7 +57,7 @@ namespace interfacedsk.servicios
             }
             catch (Exception ex)
             {
-
+                Accion.ErrorSistema(ex.Message);
             }
         }
 
@@ -80,7 +80,7 @@ namespace interfacedsk.servicios
             }
             catch (Exception ex)
             {
-
+                Accion.ErrorSistema(ex.Message);
             }
         }
 
@@ -405,6 +405,7 @@ namespace interfacedsk.servicios
             catch (Exception ex)
             {
                 MessageBox.Show("El archivo seleccionado no es un tipo de imagen válido");
+                //Accion.ErrorSistema("El archivo seleccionado no es un tipo de imagen válido");
             }
         }
 
