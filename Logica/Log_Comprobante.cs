@@ -14,7 +14,7 @@ namespace interfacedsk
         {
             try
             {
-                return CapaDato.Listar(Cls_Enti);
+                return CapaDato.Listar(Cls_Enti); 
             }
             catch (Exception ex)
             {

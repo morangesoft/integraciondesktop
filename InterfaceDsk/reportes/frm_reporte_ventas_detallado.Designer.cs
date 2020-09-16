@@ -30,8 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.btnnuevo = new System.Windows.Forms.ToolStripButton();
-            this.btnexportar = new System.Windows.Forms.ToolStripButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnverreporte = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -58,6 +56,7 @@
             this.pivotGridField14 = new DevExpress.XtraPivotGrid.PivotGridField();
             this.pivotGridField15 = new DevExpress.XtraPivotGrid.PivotGridField();
             this.pivotGridField16 = new DevExpress.XtraPivotGrid.PivotGridField();
+            this.btnexportar = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pivotGridControl1)).BeginInit();
@@ -66,32 +65,12 @@
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnnuevo,
             this.btnexportar});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1133, 39);
             this.toolStrip1.TabIndex = 4;
             this.toolStrip1.Text = "toolStrip1";
-            // 
-            // btnnuevo
-            // 
-            this.btnnuevo.Image = global::interfacedsk.Properties.Resources.nuevo;
-            this.btnnuevo.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.btnnuevo.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnnuevo.Name = "btnnuevo";
-            this.btnnuevo.Size = new System.Drawing.Size(125, 36);
-            this.btnnuevo.Text = "Vista preliminar";
-            // 
-            // btnexportar
-            // 
-            this.btnexportar.Image = global::interfacedsk.Properties.Resources.exportar;
-            this.btnexportar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.btnexportar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnexportar.Name = "btnexportar";
-            this.btnexportar.Size = new System.Drawing.Size(86, 36);
-            this.btnexportar.Text = "Exportar";
-            this.btnexportar.Click += new System.EventHandler(this.btnexportar_Click);
             // 
             // groupBox1
             // 
@@ -382,6 +361,16 @@
             this.pivotGridField16.Name = "pivotGridField16";
             this.pivotGridField16.Options.AllowEdit = false;
             // 
+            // btnexportar
+            // 
+            this.btnexportar.Image = global::interfacedsk.Properties.Resources.exportar;
+            this.btnexportar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnexportar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnexportar.Name = "btnexportar";
+            this.btnexportar.Size = new System.Drawing.Size(86, 36);
+            this.btnexportar.Text = "Exportar";
+            this.btnexportar.Click += new System.EventHandler(this.btnexportar_Click);
+            // 
             // frm_reporte_ventas_detallado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -405,7 +394,6 @@
         #endregion
 
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton btnnuevo;
         private System.Windows.Forms.ToolStripButton btnexportar;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnverreporte;
