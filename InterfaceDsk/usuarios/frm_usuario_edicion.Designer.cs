@@ -32,24 +32,24 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btngrabar = new System.Windows.Forms.ToolStripButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbotipodoc = new System.Windows.Forms.ComboBox();
             this.cboperfil = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtapellidos = new dhsoft.TextBoxNew(this.components);
             this.txtcelular = new dhsoft.TextBoxNew(this.components);
             this.txtdni = new dhsoft.TextBoxNew(this.components);
             this.txtclave = new dhsoft.TextBoxNew(this.components);
+            this.txtdireccion = new dhsoft.TextBoxNew(this.components);
             this.txtemail = new dhsoft.TextBoxNew(this.components);
             this.txtnombres = new dhsoft.TextBoxNew(this.components);
-            this.label8 = new System.Windows.Forms.Label();
-            this.cbotipodoc = new System.Windows.Forms.ComboBox();
-            this.txtdireccion = new dhsoft.TextBoxNew(this.components);
-            this.label9 = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -101,6 +101,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "datos";
             // 
+            // cbotipodoc
+            // 
+            this.cbotipodoc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbotipodoc.FormattingEnabled = true;
+            this.cbotipodoc.Location = new System.Drawing.Point(63, 27);
+            this.cbotipodoc.Name = "cbotipodoc";
+            this.cbotipodoc.Size = new System.Drawing.Size(252, 21);
+            this.cbotipodoc.TabIndex = 1;
+            this.cbotipodoc.SelectedIndexChanged += new System.EventHandler(this.cbotipodoc_SelectedIndexChanged);
+            // 
             // cboperfil
             // 
             this.cboperfil.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -109,6 +119,15 @@
             this.cboperfil.Name = "cboperfil";
             this.cboperfil.Size = new System.Drawing.Size(252, 21);
             this.cboperfil.TabIndex = 17;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(8, 27);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(54, 13);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "Tipo Doc.";
             // 
             // label2
             // 
@@ -154,6 +173,15 @@
             this.label5.Size = new System.Drawing.Size(34, 13);
             this.label5.TabIndex = 12;
             this.label5.Text = "Clave";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(8, 81);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(52, 13);
+            this.label9.TabIndex = 8;
+            this.label9.Text = "Dirección";
             // 
             // label3
             // 
@@ -242,6 +270,23 @@
             this.txtclave.Size = new System.Drawing.Size(254, 20);
             this.txtclave.TabIndex = 13;
             // 
+            // txtdireccion
+            // 
+            this.txtdireccion.Contenido = dhsoft.Enums.TipoTexto.NormalText;
+            this.txtdireccion.DecimalPrecision = 0;
+            this.txtdireccion.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(202)))), ((int)(((byte)(231)))), ((int)(((byte)(254)))));
+            this.txtdireccion.DisabledForeColor = System.Drawing.Color.Black;
+            this.txtdireccion.Enganche = null;
+            this.txtdireccion.EnterEmuleTab = true;
+            this.txtdireccion.IsDecimalNegative = false;
+            this.txtdireccion.LinkKeyDown = null;
+            this.txtdireccion.Location = new System.Drawing.Point(63, 78);
+            this.txtdireccion.MaskFormat = null;
+            this.txtdireccion.Name = "txtdireccion";
+            this.txtdireccion.Requiere = false;
+            this.txtdireccion.Size = new System.Drawing.Size(565, 20);
+            this.txtdireccion.TabIndex = 9;
+            // 
             // txtemail
             // 
             this.txtemail.Contenido = dhsoft.Enums.TipoTexto.NormalText;
@@ -275,51 +320,6 @@
             this.txtnombres.Requiere = false;
             this.txtnombres.Size = new System.Drawing.Size(252, 20);
             this.txtnombres.TabIndex = 5;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(8, 27);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(54, 13);
-            this.label8.TabIndex = 0;
-            this.label8.Text = "Tipo Doc.";
-            // 
-            // cbotipodoc
-            // 
-            this.cbotipodoc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbotipodoc.FormattingEnabled = true;
-            this.cbotipodoc.Location = new System.Drawing.Point(63, 27);
-            this.cbotipodoc.Name = "cbotipodoc";
-            this.cbotipodoc.Size = new System.Drawing.Size(252, 21);
-            this.cbotipodoc.TabIndex = 1;
-            this.cbotipodoc.SelectedIndexChanged += new System.EventHandler(this.cbotipodoc_SelectedIndexChanged);
-            // 
-            // txtdireccion
-            // 
-            this.txtdireccion.Contenido = dhsoft.Enums.TipoTexto.NormalText;
-            this.txtdireccion.DecimalPrecision = 0;
-            this.txtdireccion.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(202)))), ((int)(((byte)(231)))), ((int)(((byte)(254)))));
-            this.txtdireccion.DisabledForeColor = System.Drawing.Color.Black;
-            this.txtdireccion.Enganche = null;
-            this.txtdireccion.EnterEmuleTab = true;
-            this.txtdireccion.IsDecimalNegative = false;
-            this.txtdireccion.LinkKeyDown = null;
-            this.txtdireccion.Location = new System.Drawing.Point(63, 78);
-            this.txtdireccion.MaskFormat = null;
-            this.txtdireccion.Name = "txtdireccion";
-            this.txtdireccion.Requiere = false;
-            this.txtdireccion.Size = new System.Drawing.Size(565, 20);
-            this.txtdireccion.TabIndex = 9;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(8, 81);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(52, 13);
-            this.label9.TabIndex = 8;
-            this.label9.Text = "Dirección";
             // 
             // frm_usuario_edicion
             // 
