@@ -8,16 +8,11 @@ namespace interfacedsk
 {
   public   class Log_Servicio
     {
-
         private Dat_Servicio CapaDato = new Dat_Servicio();
-
-
         public bool Insertar(Ent_Servicio Cls_Enti)
         {
             try
             {
-
-
                 CapaDato.Insertar(Cls_Enti);
                 return true;
             }

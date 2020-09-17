@@ -30,13 +30,11 @@ namespace interfacedsk.busquedas
             {
                 Ent_Usuario ent = new Ent_Usuario();
                 Log_usuario log = new Log_usuario();
-
                 ent.usuario_id = 0;
                 ent.perfil_id = 3;
                 Listar = log.Listar_Por_Perfil(ent);
                 if (Listar.Count > 0)
                 {
-
                     dgvdatos.DataSource = null;
                     dgvdatos.DataSource = Listar;
                 }
@@ -45,7 +43,6 @@ namespace interfacedsk.busquedas
             {
                 Accion.ErrorSistema(ex.Message);
             }
-
         }
 
         private void dgvdatos_KeyDown(object sender, KeyEventArgs e)

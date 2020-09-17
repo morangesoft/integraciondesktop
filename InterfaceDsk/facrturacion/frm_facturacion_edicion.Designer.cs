@@ -734,7 +734,7 @@
             this.TxtItCantidad.MaxLength = 5;
             this.TxtItCantidad.Name = "TxtItCantidad";
             this.TxtItCantidad.Requiere = false;
-            this.TxtItCantidad.Size = new System.Drawing.Size(75, 20);
+            this.TxtItCantidad.Size = new System.Drawing.Size(98, 20);
             this.TxtItCantidad.TabIndex = 10;
             this.TxtItCantidad.Text = "0.00";
             this.TxtItCantidad.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -746,7 +746,7 @@
             // 
             this.Label26.AutoSize = true;
             this.Label26.BackColor = System.Drawing.Color.Transparent;
-            this.Label26.Location = new System.Drawing.Point(526, 45);
+            this.Label26.Location = new System.Drawing.Point(551, 44);
             this.Label26.Name = "Label26";
             this.Label26.Size = new System.Drawing.Size(39, 13);
             this.Label26.TabIndex = 11;
@@ -784,7 +784,7 @@
             this.TxtPrecunitario.EnterEmuleTab = true;
             this.TxtPrecunitario.IsDecimalNegative = false;
             this.TxtPrecunitario.LinkKeyDown = null;
-            this.TxtPrecunitario.Location = new System.Drawing.Point(573, 40);
+            this.TxtPrecunitario.Location = new System.Drawing.Point(598, 39);
             this.TxtPrecunitario.MaskFormat = "";
             this.TxtPrecunitario.MaxLength = 5;
             this.TxtPrecunitario.Name = "TxtPrecunitario";

@@ -51,9 +51,6 @@ namespace interfacedsk
                         Cmd.Parameters.Add("?idAfectacionIgv", MySqlDbType.VarChar).Value = Clas_Enti.idAfectacionIgv;
 
 
-
-
-
                         Cn.Open();
                         Trs = Cn.BeginTransaction();
                         Cmd.Transaction = Trs;

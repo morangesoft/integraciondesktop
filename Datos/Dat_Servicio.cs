@@ -30,17 +30,12 @@ namespace interfacedsk
                         Cmd.Parameters.Add("?codigoServicio", MySqlDbType.VarChar).Value = Clas_Enti.codigoServicio;
                         Cmd.Parameters.Add("?tiempoGarantiaServicio", MySqlDbType.VarChar).Value = Clas_Enti.tiempoGarantiaServicio;
                         Cmd.Parameters.Add("?fotosGaleriaServicio", MySqlDbType.VarChar).Value = Clas_Enti.fotosGaleriaServicio;
-
                         Cmd.Parameters.Add("?idUnidadMedida", MySqlDbType.Int32).Value = Clas_Enti.idUnidadMedida;
                         Cmd.Parameters.Add("?idAfectacionIgv", MySqlDbType.VarChar).Value = Clas_Enti.idAfectacionIgv;
-
-
-
                         Cn.Open();
                         Trs = Cn.BeginTransaction();
                         Cmd.Transaction = Trs;
                         Cmd.ExecuteNonQuery();
-
                         Trs.Commit();
                     }
                 }

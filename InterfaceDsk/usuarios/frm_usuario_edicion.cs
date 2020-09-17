@@ -68,7 +68,6 @@ namespace interfacedsk.usuarios
                 cbotipodoc.ValueMember = "id";
                 cbotipodoc.DisplayMember = "descripcion";
 
-
                 Listardoc = LogEmp.Listar(Ent);
 
                 cbotipodoc.DataSource = Listardoc;
@@ -88,11 +87,6 @@ namespace interfacedsk.usuarios
                 txtnombres.Focus();
                 return false;
             }
-
-
- 
-
-
             return true;
         }
 
